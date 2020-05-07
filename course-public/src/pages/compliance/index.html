@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <title>身份信息认证</title>
+  <script type="text/javascript" >
+  // 腾讯统计
+  var _mtac = {};
+  (function() {
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    // mta.setAttribute("sid", "500596128"); // h5.stockhn.com 统计
+    mta.setAttribute("sid", "500596132"); // h5.niuguwang.com 统计
+
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+  })();
+  </script>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+</head>
+<body>
+  <div id="app">
+    <section class="contanier">
+      <header class="headTitle">
+        <h5>请完善您的真实信息</h5>
+        <p>资料仅作为认证之用，保障您的信息安全</p>
+      </header>
+      <section class="textPane">
+        <mu-form ref="form" :model="validateForm" class="mu-demo-form">
+          <mu-form-item label="真实姓名（必填）" prop="username" :rules="usernameRules">
+            <mu-text-field v-model="validateForm.username" placeholder="您的姓名" prop="username"></mu-text-field>
+          </mu-form-item>
+          <mu-form-item label="身份证信息（必填）" prop="cordcode" :rules="cordcodeRules">
+              <mu-text-field v-model="validateForm.cordcode" placeholder="您的身份证信息" prop="cordcode"></mu-text-field>
+          </mu-form-item>
+          <mu-form-item label="课程短信发送至 (必填）" prop="telcode" :rules="telcodeRules">
+            <mu-text-field type="number" v-model="validateForm.telcode" placeholder="您的手机号码" prop="telcode"></mu-text-field>
+          </mu-form-item>
+        </mu-form>
+      </section>
+      <tips></tips>
+    </section>
+    <div class="primaryBtn">
+      <mu-button color="primary" @click="submit">确认提交</mu-button>
+    </div>
+  </div>
+</body>
+</html>

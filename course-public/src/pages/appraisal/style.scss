@@ -1,0 +1,246 @@
+@import './scss/base.scss';
+/*
+	px 转换 rem
+*/
+
+@function pxToRem($px) {
+  //$px为需要转换的字号
+  @return $px / 18.75px * .5rem;
+}
+
+i.check {
+  background: url('./images/selectbox.png') no-repeat;
+  background-size: contain;
+  transition: background ease-in .1s;
+}
+
+input[type="checkbox"]:checked+label .check,
+input[type="radio"]:checked+label .check {
+  background: url('./images/selected.png') no-repeat;
+  background-size: contain;
+}
+
+.problem {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 pxToRem(15px);
+  box-sizing: border-box;
+  header {
+    text-align: center;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p {
+      color: #458CF5;
+      font-size: pxToRem(16px);
+      font-weight: bold;
+    }
+    .progress {
+      height: pxToRem(6px);
+      width: pxToRem(270px);
+      border-radius: pxToRem(3px);
+      background-color: #F4F5F6;
+      background-position: 10%;
+      position: relative;
+      vertical-align: middle;
+      .progress-bar {
+        height: 100%;
+        background: #458CF5;
+        position: absolute;
+        border-radius: pxToRem(3px);
+      }
+    }
+  }
+  .fixed-bottom {
+    height: pxToRem(100px);
+    width: 100%;
+  }
+  .flex.btn {
+    display: block;
+    .skip,
+    .next,
+    .prev,
+    .submit {
+      margin-bottom: pxToRem(10px);
+      margin-left: 0;
+    }
+  }
+  .btn {
+    padding-top: pxToRem(15px);
+    display: flex;
+    .skip,
+    .next,
+    .prev,
+    .submit {
+      flex: 1;
+      height: pxToRem(44px);
+      line-height: pxToRem(44px);
+      text-align: center;
+      font-size: pxToRem(16px);
+      background-color: #458CF5;
+      margin: pxToRem(10px) pxToRem(5px);
+      border-radius: pxToRem(6px);
+      color: #fff;
+      border: 1px solid #458CF5;
+    }
+    .prev,
+    .skip {
+      background-color: #fff;
+      color: #458CF5;
+    }
+    .submit {
+      background-color: #ff4c51;
+      border: transparent;
+    }
+  }
+  .answer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    flex: 1;
+    .question {
+      font-size: pxToRem(20px);
+      font-weight: bold;
+      padding-bottom: pxToRem(15px);
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .answer-pane {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background-color: #fff;
+      .answer-item {
+        background-color: #fff;
+        float: left;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        .list-item {
+          padding-top: pxToRem(15px);
+          label {
+            display: flex;
+          }
+          i,
+          span {
+            display: block
+          }
+          i.check {
+            width: pxToRem(18px);
+            height: pxToRem(18px);
+            margin-top: pxToRem(3px);
+          }
+          span {
+            flex: 1;
+            text-align: left;
+            font-size: pxToRem(16px);
+            vertical-align: middle;
+            color: #000;
+            line-height: pxToRem(24px);
+            padding-left: pxToRem(15px);
+          }
+        }
+      }
+      .tips {
+        padding-top: pxToRem(15px);
+        font-size: pxToRem(12px);
+        color: #333;
+      }
+    }
+  }
+}
+.resultPane {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: pxToRem(19px) pxToRem(28px);
+    img {
+      display: block;
+      width: pxToRem(140px);
+    }
+    .investType {
+      padding-top: pxToRem(26px);
+      padding-left: pxToRem(12px);
+      h4 {
+        font-weight: 600;
+        font-size: pxToRem(35px);
+        color: #2A4159;
+        line-height: 1;
+        padding-bottom: pxToRem(10px);
+      }
+      p {
+        color: #8997A5;
+        font-size: pxToRem(14px);
+        line-height: 1;
+      }
+    }
+  }
+  .mainPane {
+    padding: 0 pxToRem(40px) pxToRem(15px);
+    .riskTips {
+      font-size: pxToRem(14px);
+      color: #2A4159;
+      line-height: pxToRem(24px);
+      padding-bottom: pxToRem(15px);
+      h6.risks {
+        background-image: url('./images/tsh.png');
+        background-size: pxToRem(16px) pxToRem(16px);
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-left: pxToRem(20px);
+      }
+      span {
+        color: #FF424A;
+      }
+    }
+    .warmTips {
+      font-size: pxToRem(12px);
+      color: #8997A5;
+      line-height: 1.6;
+      padding-bottom: pxToRem(45px);
+    }
+  }
+  footer {
+    padding: 0 pxToRem(40px);
+    .resultBtn {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      div {
+        width: pxToRem(140px);
+        height: pxToRem(44px);
+        line-height: pxToRem(44px);
+        text-align: center;
+        font-size: pxToRem(16px);
+        border-radius: pxToRem(1px);
+        overflow: hidden;
+        border: 1px solid #458CF5;
+        color: #458CF5;
+        &.agree {
+          color: #fff;
+          background-color: #458CF5;
+        }
+        &.agree.flex {
+          width: 100%;
+        }
+      }
+      &.flex > div {
+        width: 100%;
+      }
+    }
+    .telPane {
+      text-align: center;
+      width: 100%;
+      padding-top: pxToRem(20px);
+      padding-bottom: pxToRem(20px);
+      font-size: pxToRem(12px);
+      color: #8997A5;
+      span {
+        color: #458CF5;
+      }
+    }
+  }
+}

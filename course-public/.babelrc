@@ -1,0 +1,17 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false
+    }], 
+    ["es2015", "stage-0"]
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-runtime",
+    ["import", {
+      "libraryName": "muse-ui",
+      "libraryDirectory": "lib",
+      "camel2DashComponentName": false
+    }]
+  ]
+}

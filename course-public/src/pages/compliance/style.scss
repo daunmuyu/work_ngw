@@ -1,0 +1,286 @@
+/*
+	px 转换 rem
+*/
+
+@function pxToRem($px) {
+  //$px为需要转换的字号
+  @return $px / 18.75px * .5rem;
+}
+
+@media(-webkit-min-device-pixel-ratio: 2) {
+  .border-ios {
+    border-width: 0.5px !important;
+  }
+}
+
+@mixin extend-click {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+
+$font-2a-color: #2A4159;
+$font-89-color: #8997A5;
+$font-00-color: #000000;
+$bg-45-color: #458CF5;
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: rgba(#8997A5, 50%);
+  font-size: 16px;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: none
+}
+
+#app {
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  width: 100%;
+  max-width: pxToRem(375px);
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.contanier {
+  width: pxToRem(345px);
+  flex: 1;
+  height: calc(100% - 2.14rem);
+  margin: 0 auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  h5 {
+    font-size: pxToRem(20px);
+    color: $font-2a-color;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  p {
+    font-size: pxToRem(13px);
+    line-height: 1.6;
+    color: #8997A5;
+  }
+  .mu-form-item__has-label {
+    height: pxToRem(55px);
+    min-height: pxToRem(55px);
+    .mu-form-item-label {
+      position: absolute;
+      left: 0;
+      line-height: pxToRem(43px);
+      font-size: pxToRem(16px);
+      color: $font-89-color;
+    }
+  }
+  .mu-form-item-content {
+    height: pxToRem(55px);
+    .mu-input {
+      // height: 100%;
+      text-align: right;
+      input {
+        text-align: right;
+        font-size: pxToRem(16px);
+      }
+    }
+    .mu-checkbox {
+      margin-right: 0;
+      width: 100%;
+      .mu-checkbox-label {
+        flex: 1;
+      }
+    }
+  }
+  .checkboxPane {
+    padding-top: pxToRem(10px);
+    .checkList {
+      padding-bottom: pxToRem(15px);
+      font-size: pxToRem(13px);
+      color: #000000;
+      display: flex;
+      .agreement {
+        line-height: 1.5;
+        padding-left: 8px;
+        a {
+          color: $bg-45-color;
+        }
+      }
+      .mu-checkbox-checked {
+        .mu-checkbox-icon::before {
+          background-image: url('./images/affirm@2x.png');
+        }
+      }
+      .mu-checkbox-icon {
+        position: relative;
+        .mu-checkbox-ripple-wrapper {
+          width: 38px;
+          height: 38px;
+          top: -8px;
+          left: -8px;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          width: pxToRem(13px);
+          height: pxToRem(13px);
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background-image: url('./images/indeterminacy@2x.png');
+          background-size: 100% 100%;
+        }
+        svg {
+          display: none;
+        }
+      }
+    }
+  }
+  .headTitle {
+    padding: pxToRem(20px) 0 pxToRem(25px) 0;
+    p {
+      padding-left: pxToRem(15px);
+      background-image: url('./images/icon_anquan@2x.png');
+      background-size: pxToRem(11px) pxToRem(13px);
+      background-position: left center;
+      background-repeat: no-repeat;
+    }
+  }
+  .autographPane {
+    padding-top: pxToRem(18px);
+    border-bottom: 1px solid #E8E8E8;
+    margin-bottom: pxToRem(25px);
+    p {
+      padding: 6px 0 12px;
+      line-height: 1.5;
+    }
+    .autograph {
+      width: 100%;
+      height: pxToRem(95px);
+      border: 1px dashed #E8E8E8;
+      background-color: #F9FBFD;
+      text-align: center;
+      line-height: pxToRem(95px);
+      font-size: pxToRem(13px);
+      color: #8997A5;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.primaryBtn {
+  width: pxToRem(345px);
+  margin: 0 auto;
+  height: pxToRem(80px);
+  .mu-button {
+    width: 100%;
+    height: pxToRem(44px);
+    font-size: pxToRem(16px);
+    background-color: $bg-45-color;
+    color: #FFFFFF;
+  }
+}
+
+// 签名弹框样式
+.signWarp {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .sign-name-wrap {
+    width: 90%;
+    height: calc(100% - 2rem);
+    border: 1px dashed #E8E8E8;
+    border-radius: 5px;
+    background-color: #F9FBFD;
+    margin: 0 auto;
+    position: relative;
+    .exampleImg {
+      width: pxToRem(126px);
+      position: absolute;
+      top: pxToRem(-70px);
+      left: pxToRem(168px);
+      transform: rotate(-90deg);
+    }
+    .signature-pad {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    }
+  }
+  .signFooter {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: pxToRem(20px);
+    font-size: pxToRem(13px);
+    color: $font-2a-color;
+    font-weight: 600;
+    button {
+      width: pxToRem(100px);
+      height: pxToRem(44px);
+      box-sizing: border-box;
+      font-size: pxToRem(20px);
+      margin-left: pxToRem(15px);
+      &.mu-secondary-color {
+        background: #FF4C51;
+        color: #fff;
+      }
+      &.mu-primary-color {
+        color: #458CF5;
+        border: solid 1px #458CF5;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+@media all and (orientation: portrait) {
+  .signWarp {
+    position: absolute;
+    left: -30%;
+    top: 25%;
+    width: 160%;
+    height: 50%;
+    transform: rotate(90deg);
+  }
+}
+
+.contImg {
+  padding: pxToRem(10px) 0 pxToRem(40px) 0;
+  border-bottom: 1px solid #E8E8E8;
+  margin-bottom: pxToRem(20px);
+  img {
+    display: block;
+    margin: 0 auto;
+    width: pxToRem(197px);
+  }
+}
+
+.mu-raised-button {
+  box-shadow: none !important;
+}

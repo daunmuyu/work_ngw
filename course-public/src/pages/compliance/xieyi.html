@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <title>协议签署及确定</title>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+</head>
+<body>
+  <div id="app">
+    <section class="contanier">
+      <header class="headTitle">
+        <h5>请进行如下确认</h5>
+        <p>资料仅作为认证之用，保障您的信息安全</p>
+      </header>
+      <section class="textPane checkboxPane">
+        <div class="checkList">
+          <mu-checkbox v-model="isMe" value="isMe" label="确认进行风险测评且是本人测评。"></mu-checkbox>
+        </div>
+        <div class="checkList">
+          <mu-checkbox v-model="isRead" value="isRead" label=""></mu-checkbox>
+          <span class="agreement" v-html="agreementtext"></span>
+        </div>
+        <div class="autographPane border-ios">
+          <div class="autograph" @click="open = true">
+            <span v-if="isEmpty">点击进行手写签名（必填）</span>
+            <img v-else :src="base64Img" alt="">
+          </div>
+          <p  v-if="!isEmpty">TIP：点击签名可进行修改</p>
+        </div>
+      </section>
+      <tips></tips>
+    </section>
+    <mu-drawer :open.sync="open" :docked="docked" :right="position === 'right'" width="100%">
+      <div class="signWarp">
+        <div id="sign-name-wrap" class="sign-name-wrap">
+          <img class="exampleImg" src="./images/slbg.png" v-if="isEmpty" alt="">
+          <canvas  id="signature-pad" class="signature-pad" width="1800" height="700"></canvas>
+        </div>
+        <div class="signFooter">
+          <div class="fontLight">
+            <p>请在上方空白处填写手写签名<br/>注意：字迹工整清晰，横向书写</p>
+          </div>
+          <div class="signBtn">
+            <mu-button color="primary" @click="clearCanvas">清空</mu-button>
+            <mu-button color="secondary" @click="saveSignature">确认</mu-button>
+          </div>
+        </div>
+      </div>
+    </mu-drawer>
+    <div class="primaryBtn">
+      <mu-button color="primary" @click="submit">确认提交</mu-button>
+    </div>
+  </div>
+</body>
+</html>

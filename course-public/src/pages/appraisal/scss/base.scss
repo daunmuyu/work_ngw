@@ -1,0 +1,198 @@
+html,
+body,
+div,
+section,
+header,
+footer,
+nav,
+dl,
+dt,
+ul,
+ol,
+li,
+button,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+td,
+tr,
+th {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+button,
+input,
+optgroup,
+option,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  *font-size: 100%;
+  -webkit-appearance: none;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:before {
+  content: '';
+  display: block;
+}
+
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0; // font-family: -apple-system,SF UI Text,Helvetica Neue,Helvetica,Arial,sans-serif,Helvetica,"微软雅黑";
+  height: 100%;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  background-color: #f8f8f8;
+}
+
+body {
+  display: none
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+
+/*动画*/
+
+.slide-enter,
+.slide_back-enter {
+  position: absolute;
+  width: 100%;
+}
+
+.slide-leave,
+.slide_back-leave {
+  position: absolute;
+  width: 100%;
+}
+
+.slide-enter-active,
+.slide_back-enter-active {
+  transition: all 0.3s linear;
+}
+
+.slide-leave-active {
+  position: absolute;
+  transition: all 0.3s linear;
+  transform: translate(-100%);
+}
+
+.slide-enter {
+  transform: translateX(100%);
+}
+
+.slide_back-leave-active {
+  position: absolute;
+  transition: all 0.3s linear;
+  transform: translate(100%);
+}
+
+.slide_back-enter {
+  transform: translateX(-100%);
+}
+
+/*
+	border
+*/
+
+@media(-webkit-min-device-pixel-ratio: 2) {
+  .border-ios {
+    border-width: 0.5px !important;
+  }
+}
+
+/*
+	text-align
+*/
+
+@mixin text-left {
+  text-align: left;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin text-right {
+  text-align: right;
+}
+
+/*
+	text-ellipsis
+	文本超长使用省略号
+*/
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*
+	text-wrap
+	文本自动换行
+*/
+
+@mixin text-wrap {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+@mixin extend-click {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <title>风险评测</title>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+</head>
+<body>
+  <div id="app">
+    <section class="resultPane" v-if="resultData">
+      <header>
+        <div class="investType">
+          <h4>{{resultData.Type.Title}}</h4>
+          <p>{{resultData.Type.TitlePrefix}}</p>
+        </div>
+        <div class="imgType">
+          <img :src="resultData.Type.Image" alt="">
+        </div>
+      </header>
+      <div class="mainPane">
+        <div class="riskTips" v-if="resultData.Paragraphs[0]">
+          <h6 class="risks" v-if="resultData.Paragraphs[0].Ttile"><span>{{resultData.Paragraphs[0].Ttile}}</span></h6>
+          <h6 v-html="resultData.Paragraphs[0].Content"></h6>
+        </div>
+        <div class="warmTips" v-if="resultData.Paragraphs[1]">
+          <p v-if="resultData.Paragraphs[1].Ttile">{{resultData.Paragraphs[1].Ttile}}</p>
+          <p v-html="resultData.Paragraphs[1].Content"></p>
+          <p v-if="resultData.Paragraphs[2].Ttile">{{resultData.Paragraphs[2].Ttile}}</p>
+          <p v-html="resultData.Paragraphs[2].Content"></p>
+        </div>
+      </div>
+      <footer>
+        <div class="resultBtn" :class="resultData.Buttons.length === 1 && 'flex'">
+          <template v-for="(item,index) in resultData.Buttons">
+            <div class="border-ios" :class="item.Agree ? 'agree' : 'disagree'" @click="agreeOrNot(item.Url)">{{item.Text}}</div>
+          </template>
+        </div>
+        <div class="telPane" @click="telPhone('021-25099066')">客服电话电话：<span>021-25099066</span></div>
+      </footer>
+    </section>
+    <section class="problem" v-else>
+      <header v-if="questions">
+        <p>{{progress}}</p>
+        <div class="progress">
+          <div class="progress-bar" :style="{ width: Math.round(progress/questions.length*100)+'%'}"></div>
+        </div>
+        <p>{{questions.length}}</p>
+      </header>
+      <div class="answer">
+        <div class="answer-pane clearfix">
+          <transition-group :name="transitionName">
+            <div class="answer-item" v-for="(result,index) in questions" v-show="progress == result.questioncode" :key="result.questioncode">
+              <div class="question border-ios">{{result.questionname}}</div>
+              <template v-if="result.ismult === '0'">
+                <div class="list-item" v-for="(item, index) in result.resultdata" :key="index">
+                  <input class="hide" type="radio" :name="result.questioncode" :value="item.resultpoint+item.result" :id="result.questioncode+'-'+item.result"
+                    v-model="answer[progress-1]">
+                  <label :for="result.questioncode+'-'+item.result"><i class="check"></i><span>{{item.result}}：{{item.resultcontent}}</span></label>
+                </div>
+              </template>
+              <template v-else>
+                <div class="list-item" v-for="(item, index) in result.resultdata" :key="index">
+                  <input class="hide" type="checkbox" :name="result.questioncode" :value="item.resultpoint+item.result" :id="result.questioncode+'-'+item.result" v-model="answer[progress-1]">
+                  <label :for="result.questioncode+'-'+item.result"><i class="check"></i><span>{{item.result}}：{{item.resultcontent}}</span></label>
+                </div>
+              </template>
+              <div class="tips" v-if="result.ismult !== '0'">注：本题可多选，但评分以其中最高分值选项为准</div>
+            </div>
+          </div>
+        </transition-group>
+      </div>
+      <div class="fixed-bottom" v-if="questions">
+        <div class="btn" :class="progress===1 && 'flex'">
+          <div class="prev border-ios" @click="prev" v-if="progress > 1">上一题</div>
+          <div class="next" @click="nextResult" v-if="progress < questions.length">下一题</div>
+          <div class="submit border-ios" @click="nextResult" v-if="progress === questions.length">完成</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
