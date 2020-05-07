@@ -1,0 +1,15 @@
+.main-layout{
+  .pwd{
+    color: #49a9ee;
+    font-size: 12px;
+    padding-left: 12px;
+    max-width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    transition: all .3s;
+    vertical-align: middle;
+  }
+  .left-panel{
+    padding-right: 16px;
+  }
+}

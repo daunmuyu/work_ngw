@@ -1,0 +1,37 @@
+<div :class="['container', {night: +skinType !== 1}]">
+    <transition name='fade'>
+        <div @click="$router.push('/')" @mouseover="toggleButtonShow(true)" @mouseleave="toggleButtonShow(false)" v-show="showTottleButton" class="go-back-button">	<span class="back-arrow">&lt;返回</span> | 您正在收看的是{{roomN}}直播间</div>
+      </transition>
+    <div class="main" @mouseover="toggleButtonShow(true)" @mouseleave="toggleButtonShow(false)">
+      <div class="video-container">
+        <video-player :vedioInfo="videoObj" @videoChanged="(val) => { currentGoodVideo = val; }" :currentVideo="currentGoodVideo"></video-player>
+      </div>
+      <!-- <div class="info-container">
+        <live-info :title="$root.liveInfo.title" :content="$root.liveInfo.description"></live-info>
+      </div> -->
+    </div>
+    <div :class="['left', {'hide-left': hideLeft}]">
+      <transition name='fade'>
+        <div @mouseover="toggleButtonShow(true)" @mouseleave="toggleButtonShow(false)" v-show="showTottleButton" class="toggle-tabs" @click="handelToggleTabs">
+          <svg t="1532674707853" class="icon" :class="['toggle-arrow', {'right-arrow': hideLeft}]" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2915" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25"><path d="M790.046118 119.928471A60.235294 60.235294 0 1 0 704.873412 34.755765L258.650353 480.978824a60.235294 60.235294 0 0 0 0 85.172705l425.923765 425.923765a60.235294 60.235294 0 1 0 85.232941-85.172706L386.469647 523.565176l403.576471-403.57647z" fill="#AEAFB3" p-id="2916"></path></svg>
+        </div>
+      </transition>
+      <Tabs class="tabs-container">
+        <TabPane label="聊 天 室">
+          <chat class="chat-live" @moreList="getMessageList" :message-list="messageList" @sendMessage="sendMessage" @clearMsgList="clearMsgList"></chat>
+        </TabPane>
+        <TabPane label="直播老师">
+          <teacher-info :teacher-list="teacherList"></teacher-info>
+        </TabPane>
+        <TabPane label="精彩视频">
+          <video-list
+          :videoList="goodVideoList"
+          :currentVideo="currentGoodVideo"
+          @changeVideo="changeVideo"
+          ></video-list>
+        </TabPane>
+      </Tabs>
+      <!-- <team :slogan="team.slogan" :qrcode="team.qrcode"></team> -->
+    </div>
+    <!-- <div class="to-list active"  @click="toList" v-if="!$root.isPublic"> 返回列表</div> -->
+  </div>

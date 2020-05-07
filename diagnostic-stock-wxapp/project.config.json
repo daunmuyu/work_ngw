@@ -1,0 +1,81 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"uglifyFileName": true
+	},
+	"miniprogramRoot": "dist/",
+	"compileType": "miniprogram",
+	"appid": "wx05afe3aacbacb3a7",
+	"projectname": "%E6%B6%A8%E4%BA%86%E4%B9%88%E8%AF%8A%E8%82%A1",
+	"libVersion": "2.1.0",
+	"scripts": {
+		"beforeCompile": "npm run dev",
+		"beforePreview": "npm run dev",
+		"beforeUpload": "npm run build"
+	},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "首页-授权页",
+					"pathName": "pages/index/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "首页-搜索页",
+					"pathName": "pages/home/main",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "诊股-搜索页",
+					"pathName": "pages/search/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "诊股-个股页",
+					"pathName": "pages/stock/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "诊股-聊天室",
+					"pathName": "pages/chat/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "绑定手机号",
+					"pathName": "pages/phone/main",
+					"query": ""
+				}
+			]
+		}
+	}
+}

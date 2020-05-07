@@ -1,0 +1,22 @@
+.swiper {
+  width: pxToRem(342px);
+  margin: 0 auto pxToRem(40px);
+  .mint-swipe {
+    height: pxToRem(280px);
+    .teacher {
+      margin: 0 auto;
+    }
+    .mint-swipe-indicators {
+        position: absolute;
+        bottom: 0;
+        .mint-swipe-indicator {
+            width: pxToRem(12px);
+            height: pxToRem(12px);
+            &.is-active {
+              background-color: rgb(255, 76, 81) !important;
+              opacity: 1;
+            }
+        }
+    }
+  }
+}

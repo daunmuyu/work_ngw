@@ -1,0 +1,262 @@
+html,
+body,
+div,
+p,
+h6,
+h5,
+h4,
+h3,
+ul,
+li,
+ol,
+nav,
+section,
+header,
+footer,
+article {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+@function pxToRem($px) {
+  //$px为需要转换的字号
+  @return $px / 18.75 * .5rem;
+}
+
+@media(-webkit-min-device-pixel-ratio: 2) {
+  .border-ios {
+    border-width: 0.5px !important;
+  }
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+input::-webkit-input-placeholder {
+  color: #BABABA;
+}
+
+#app {
+  height: 100%;
+  position: relative;
+  font-size: pxToRem(17);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: scroll;;
+  -webkit-overflow-scrolling: touch;
+
+  .van-popup{
+    background: none !important;
+    text-align: center;
+  }
+
+  &::after {
+    min-height: 101%;
+  }
+}
+
+.imgPane {
+  flex: 1;
+  width: 100%;
+  line-height: 0;
+  font-size: 0;
+  .widImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.content{
+  flex: 1;
+  background: url('./images/img2.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 3%;
+}
+
+.freeCont{
+  width: 100%;
+  height: pxToRem(275);
+  // margin-top: pxToRem(10);
+  background: url('./images/bg2.png') no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+}
+
+.head{
+  font-size: pxToRem(20);
+  text-align: center;
+  padding-top: pxToRem(7);
+  font-weight: 900;
+  background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(223, 9, 9, 1)), to(rgba(210, 83, 104, 1)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title{
+  font-size: pxToRem(14);
+  text-align: center;
+  color: #E4A465;
+  margin-top: pxToRem(13);
+}
+
+.input-phone{
+  width: pxToRem(280);
+  margin: 0 auto;
+}
+
+.input-pane {
+  width: 100%;
+  height: pxToRem(38);
+  border-radius: pxToRem(6);
+  overflow: hidden;
+  display: flex;
+  margin-top: pxToRem(11);
+
+  .icon {
+    height: pxToRem(20);
+    display: block;
+    margin: pxToRem(9) pxToRem(12) 0 pxToRem(18);
+  }
+
+  .icon-phone{
+    width: pxToRem(12);
+  }
+
+  .icon-lock{
+    width: pxToRem(14)
+  }
+
+  .iconTrue {
+    width: pxToRem(20);
+    height: pxToRem(20);
+    display: block;
+    margin: pxToRem(9) pxToRem(16) 0 pxToRem(10);
+  }
+
+  input {
+    width: pxToRem(80);
+    display: block;
+    flex: 1;
+    border: none;
+    outline: none;
+    padding-left: pxToRem(10);
+    font-size: pxToRem(14);
+    background-color: transparent;
+  }
+  .input{
+    display: block;
+    flex: 1;
+    border: none;
+    outline: none;
+    padding-left: pxToRem(10);
+    line-height: pxToRem(40);
+    font-size: pxToRem(14);
+    background-color: transparent;
+    
+    &::-webkit-input-placeholder {
+      color: #BABABA;
+    }
+    &::-moz-placeholder {
+      color: #BABABA;
+    }
+    &::-ms-input-placeholder {
+      color: #BABABA;
+    }
+  }
+
+  .codeBtn {
+    display: block;
+    width: pxToRem(90);
+    height: 100%;
+    padding-right: pxToRem(4);
+    position: relative;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: pxToRem(10);
+    color: #8997A5;
+
+    &::after {
+      content: "";
+      position: absolute;
+      border-left: 1px solid #8997A5;
+      height: pxToRem(14);
+      left: pxToRem(-4);
+      top: pxToRem(12);
+    }
+  }
+
+  &.border-ios {
+    border: 1px solid #D8D8D8;
+    position: relative;
+
+    &::before {
+      content: "";
+      height: pxToRem(14);
+      border-left: 1px solid #8997A5;
+      position: absolute;
+      top: pxToRem(12);
+      left: pxToRem(43);
+    }
+  }
+}
+
+.img-pane{
+  width: pxToRem(319);
+  height: pxToRem(455);
+}
+
+.close{
+  width: pxToRem(35);
+  height: pxToRem(35);
+  margin-top: pxToRem(10);
+}
+
+.btn-pane{
+  width: pxToRem(280);
+  height: pxToRem(34);
+  margin: pxToRem(13) auto pxToRem(7);
+  .addBtn{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #FF4E3C, #FD2D63);
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: pxToRem(6);
+  }
+}
+
+.tip{
+  font-size: pxToRem(12);
+  color: #3C5672;
+}
+
+.rule-tip{
+  width: pxToRem(230);
+  margin: 0 auto;
+  display: inline-block;
+  color: red;
+  font-size: pxToRem(10);
+  position: absolute;
+  left: 0;
+}
+.input-top{
+  margin-top: pxToRem(20);
+}

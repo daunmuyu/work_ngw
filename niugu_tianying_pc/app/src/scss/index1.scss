@@ -1,0 +1,218 @@
+@import "./common1.scss";
+
+.container {
+  .top {
+    background-image: url('../img/index/indexa.png');
+  }
+
+  .content {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    .layer {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      .items {
+        overflow: auto;
+        zoom: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0;
+      }
+    }
+
+    .choice {
+      width: 100%;
+      background: url('../img/index/choice.png');
+
+      .items {
+        text-align: center;
+
+        .item {
+          // max-height: 200px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+
+          h5 {
+            margin: 0;
+            display: -webkit-box;
+           /*!autoprefixer: off */
+           -webkit-box-orient: vertical;
+          /*! autoprefixer: on */
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+          }
+
+          p {
+            font-size: 14px;
+            max-width: 200px;
+            margin: 0 auto;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+
+    .whatToDo {
+      .items {
+        max-width: 1000px;
+
+        & > div {
+          margin: 10px 0;
+        }
+
+        .item {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          overflow: auto;
+          zoom: 1;
+          padding: 25px;
+          border: 1px solid rgb(238, 238, 238);
+          // margin: 15px;
+          dl {
+            text-align: left;
+            padding-right: 0;
+            margin: 0;
+
+            dt {
+              padding-bottom: 10px;
+              font-size: 18px;
+            }
+
+            dd {
+              font-size: 14px;
+
+              p {
+                margin-bottom: 0;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+              }
+
+              a {
+                font-size: 10px;
+                color: #f9742b;
+                background-image: url("../img/index/icon@x.png");
+                background-position: right center;
+                background-repeat: no-repeat;
+                background-size: 15px 15px;
+                padding-right: 20px;
+              }
+            }
+          }
+
+          .pics {
+            padding: 0;
+
+            img {
+              width: 100%;
+              line-height: inherit;
+            }
+          }
+        }
+      }
+    }
+
+    .whatIsThis {
+      background-color: rgb(248, 248, 248);
+      padding-top: 20px;
+
+      .isThis {
+        max-width: 950px;
+        background-image: url("../img/index/what.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        padding-bottom: 40px;
+
+        .tips {
+          padding-top: 20px;
+        }
+
+        .items {
+          max-width: 700px;
+          margin: 0 auto;
+
+          h5 {
+            font-size: 17px;
+            padding: 0 15px;
+          }
+
+          p {
+            margin-top: 20px;
+            font-size: 14px;
+            padding: 0 15px;
+          }
+        }
+      }
+    }
+
+    .tips {
+      font-size: 18px;
+      font-weight: bold;
+      font-family: 'PingFangSC-Regular';
+      position: relative;
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      padding: 40px 0;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 46px;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #f9742b;
+      }
+    }
+  }
+  .Anti_fraud{
+    position: absolute;
+    top: 375px;
+    z-index: 2;
+    left: 50%;
+    width: 100%;
+    background-color: #fffde7;
+    max-width: 1200px;
+    transform: translate(-50%, 0);
+    overflow: hidden;
+    height: 40px;
+    .Anti_speak {
+      display: block;
+      position: absolute;
+      top: 8px;
+      left: 9px;
+      bottom: 6px;
+      width: 20px;
+      height: 20px;
+    }
+    .Anti_con {
+      height: 100%;
+      overflow: hidden;
+      margin: 0 10px 0px 40px;
+      // max-width: 1124px;
+      .Anti_text{
+        height: 100%;
+        display: none;
+        padding: 12px 0;
+        width: 888%;
+        font-size: 16px;
+        line-height: 14px;
+        color: #f9742b;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+

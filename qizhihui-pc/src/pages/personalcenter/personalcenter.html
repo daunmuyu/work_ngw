@@ -1,0 +1,211 @@
+<div id="personalcenter">
+  <!-- <Top/> -->
+  <SweetModal ref="renzhengModal" class="renzheng-modal z-index800 draw-modal" :blocking="true">
+    <div class="renzheng draw-cont">
+      <div class="head">
+        实名认证
+        <div class="del" @click="renzhengClose">
+          <svg class="del-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#292c34"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="content">
+        <cusInput placeholder="姓名" v-model="renzheng.name" class="name mt20" />
+        <cusInput class="new-pass mt20" v-model="renzheng.idcard" imgPath="/static/img/shenfenzheng.png" placeholder="身份证号码" />
+        <p class="hint">请填写真实的身份信息,认证通过后无法更改请谨慎填写</p>
+        <a href="javascript:;" class="btn submit" :class="{'disabled':!renzheng.canSubmit}" @click="doAddIdCard">提交</a>
+      </div>
+    </div>
+  </SweetModal>
+  <SweetModal ref="bangDingModal" class="bangDing-modal z-index800 draw-modal" :blocking="true">
+    <div class="bangDing draw-cont">
+      <div class="head">
+        添加提现银行卡
+        <div class="del" @click="bangDingClose">
+          <svg class="del-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#292c34"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="content">
+        <cusInput placeholder="银行名称" v-model="bangDing.name" class="name"  imgPath="/static/img/shenfenzheng@2x.png"/>
+        <cusInput type="number" class="new-pass mt20" v-model="bangDing.idcard" imgPath="/static/img/shenfenzheng@2x.png" placeholder="银行卡号" />
+        <p class="hint">注意：提现银行卡的开户人信息需与账户实名认证信息一致。<br/>提现一次之后银行卡即被绑定，要想更换提现银行卡，需要先
+            解绑。</p>
+        <a href="javascript:;" class="btn submit" :class="{'disabled':!bangDing.canSubmit}" @click="doAddBankCard">提交</a>
+      </div>
+    </div>
+  </SweetModal>
+  <SweetModal ref="addDeleteModal" class="addDelete-modal draw-modal" :blocking="true">
+    <div class="addDelete draw-cont">
+      <div class="head">
+        {{draw.title}}
+        <div class="del" @click="addDeleteClose">
+          <svg class="del-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#292c34"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="content">
+        <h5>{{draw.content}}</h5>
+        <a href="javascript:;" class="btn submit" @click="addDelete">{{draw.btnTxt}}</a>
+      </div>
+    </div>
+  </SweetModal>
+  <!-- <SweetModal ref="alertModal" class="alert-modal draw-modal" :blocking="true" icon="success">
+    <div class="alert draw-cont">
+      绑定成功
+    </div>
+  </SweetModal> -->
+  <div class="banner">
+  </div>
+  <div class="person-info">
+    <img src="../../../static/img/touxiang.png" alt="">
+    <p class="tell">个人中心</p>
+  </div>
+  <div class="am-g">
+    <div class="p-tabs">
+      <a href="javascript:;" @click="tabclick(1)" class="tab" :class="{'active': tabShow === 1}">我的账号</a>
+      <a href="javascript:;" @click="tabclick(2)" class="tab" :class="{'active': tabShow === 2}">账户入金</a>
+      <a href="javascript:;" @click="tabclick(3)" class="tab" :class="{'active': tabShow === 3}">账户出金</a>
+      <a href="javascript:;" @click="tabclick(4)" class="tab" :class="{'active': tabShow === 4}">资金明细</a>
+    </div>
+    <div class="ac-line"></div>
+    <!-- 我的账号 -->
+    <div class="account-content clearfix" v-if="tabShow === 1">
+      <div class="item fl border-bom">
+        <p class="title">手机号</p>
+        <div class="info clearfix">
+          <a class="des fl">{{phone}}</a>
+        </div>
+        <div class="right-line"></div>
+      </div>
+      <div class="item fl border-bom">
+        <p class="title">密码</p>
+        <div class="info clearfix">
+          <a class="des fl">* * * * * *</a>
+          <a class="handle fl" href="javascript:;" @click="modifyPass">修改密码></a>
+        </div>
+      </div>
+      <div class="item fl border-bom">
+        <p class="title">实名认证</p>
+        <div class="info clearfix">
+          <a class="des fl">{{bankInfo.idauthentication===1?userInfo.Name||'已认证':'未认证'}}</a>
+          <a href="javascript:;" class="handle fl" @click="doRenZheng" v-show="bankInfo.idauthentication!==1">立即认证></a>
+        </div>
+        <div class="right-line"></div>
+      </div>
+      <div class="item fl border-bom">
+        <p class="title">账户余额</p>
+        <div class="info clearfix">
+          <a class="des fl">{{canusedamount? canusedamount : 0}}元</a>
+        </div>
+      </div>
+      <div class="item fl">
+          <p class="title">提现银行卡（出金前必须进行实名认证）</p>
+          <div class="info clearfix">
+            <template v-if="bankInfo.bankstatus===1">
+              <a class="des fl">
+                {{bankInfo.banktypename}}<br/>
+                <span>{{bankInfo.bankaccount.slice(-4)}}</span>
+              </a>
+              <a href="javascript:;" class="handle fl" @click="doBangDing">解除绑定></a>
+            </template>
+            <template v-else>
+              <a class="des fl">未添加</a>
+              <a href="javascript:;" class="handle fl" @click="doBangDing">立即添加></a>
+            </template>
+          </div>
+        </div>
+    </div>
+    <!-- 账户入金 -->
+    <div class="draw-content" v-if="tabShow ===2">
+      <div class="draw-money">
+        <div class="left top-item fl">
+          <p class="title">入金金额</p>
+          <input type="number" v-model='amount' placeholder="1000" class="input-money">
+          <span class="hint">(元/人民币) 最小单位: 分</span>
+          <div class="line"></div>
+        </div>
+        <div class="right top-item fl">
+          <p class="title">支付方式</p>
+          <img :src="payment.ico" alt="">
+          <img style="margin-left: 10px;" src="../../../static/img/pa.jpg" alt="">
+          <a href="javascript:;" class="btn" @click="doPayment">提交支付</a>
+        </div>
+      </div>
+      <!-- <img class="draw-tables" src="../../../static/img/biaoge.png" alt=""> -->
+    </div>
+    <!-- 账户出金 -->
+    <div class="leave-content clearfix" v-if="tabShow === 3">
+      <div class="item fl">
+        <div class="item-top">账户余额：{{canusedamount}}元</div>
+        <div class="item-cont">
+          提现金额：
+          <input placeholder="10元起" v-model="leaveNum" class="name" type="number"/>
+          &nbsp;<span @click="leaveAll">&nbsp;全部提现</span>
+        </div>
+        <div class="item-bom">手续费：{{bankInfo.walletfeetext}}</div>
+        <div class="item-btn" @click="walletrquest">确定提现</div>
+      </div>
+      <div class="item fl">
+        <div class="item-top">可提金额：{{bankInfo.amount}}元</div>
+        <div class="item-cont">
+          提现银行卡：
+          <template v-if="bankInfo.bankstatus===1">
+              {{bankInfo.banktypename}} ({{bankInfo.bankaccount.slice(-4)}})</span>
+          </template>
+          <template v-else>
+          <span @click="doBangDing">添加提现银行卡</span>
+          </template>
+        </div>
+        <div class="item-bom">到账时间：{{bankInfo.arrivaltimeprompt}}</div>
+      </div>
+    </div>
+    <!-- 资金明细 -->
+    <div class="fund-details" v-if="tabShow === 4">
+      <div class="select-box clearfix">
+        <!-- <div class="item-time fl">
+          <span>时间：</span>
+          <el-date-picker v-model="dataValue" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
+          </el-date-picker>
+        </div> -->
+        <div class="item-range fr">
+          <span>范围：</span>
+          <el-select v-model="value" placeholder="请选择">
+            <template v-for="item in selectOptions">
+              <el-option :key="item.value" :label="item.label" :value="item.value"></el-option>
+            </template>
+          </el-select>
+          <el-button @click="queryRange" type="primary">查询</el-button>
+        </div>
+      </div>
+      <div class="table-box">
+        <table>
+          <tr><th>时间</th><th>操作</th><th>资金流向</th><th>可用余额</th></tr>
+          <template v-if="moneyData.length">
+            <tr v-for="(item,index) in moneyData">
+              <td width="230">{{item.optime}}</td>
+              <td>{{item.op}}</td>
+              <td width="230" :class="className(item.amount)">{{item.amount}}</td>
+              <td width="230">{{item.canusedamount}}</td>
+            </tr>
+            <tr><td colspan="4" style="text-align: center;cursor: pointer;">
+                <el-button v-show="loading" type="text" plain class="load-more" @click="currentChange(pageNum+1)" >加载更多</el-button>
+                <span class="gray" v-show="!loading">没有更多数据啦~</span>
+            </td></tr>
+          </template>
+          <template  v-if="!moneyData.length">
+            <tr><td colspan="4">暂无数据！</td></tr>
+          </template>
+        </table>
+      </div>
+      <div class="pageNum" v-if="recordcount">
+          <el-pagination @current-change="currentChange" :current-page="pageNum" prev-text="< 上一页" next-text="下一页 >" layout="prev, pager, next" :total="recordcount"> </el-pagination>
+      </div>
+    </div>
+
+  </div>
+  <!-- <Bottom/> -->
+</div>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <!-- 分享meta设置 -->
+  <meta itemprop="name" content="好股365" />
+  <meta itemprop="image" content="https://h5.stockhn.com/img/hntg/96.png" />
+  <meta name="description" itemprop="description" content="每天一块钱 投资更轻松" />
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+  <script type="text/javascript" src="https://open.mobile.qq.com/sdk/qqapi.js"></script>
+  <!-- 分享meta设置 -->
+  <title>好股365</title>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+  <!--微信禁用分享  -->
+  <script>  
+    function onBridgeReady() {  
+      WeixinJSBridge.call('hideOptionMenu');  
+    }  
+    if (typeof WeixinJSBridge == "undefined") {  
+      if (document.addEventListener) {  
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);  
+      } else if (document.attachEvent) {  
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);  
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);  
+      }  
+    } else {  
+      onBridgeReady();  
+    }  
+  </script>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <div class="container">
+      <div class="section" v-if="info">
+        <h5>产品售价</h5>
+        <template v-for="(item, index) in info.coursepriceData">
+        <div class="priceLabel" :class="{'active': select === item}" @click="select = item" :key="index">
+          <div class="left">
+            <h6>好股365</h6>
+            <p>有效期：{{item.purchasecycle}}</p>
+          </div>
+          <div class="right">{{item.price}}</div>
+        </div>
+        </template>
+      </div>
+      <div class="fill"></div>
+      <div class="section">
+        <van-cell-group>
+          <van-field @input="changeInput" v-model="userName" clearable label="姓名" placeholder="请输入姓名" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field @input="changeInput" v-model="idCard" clearable label="身份证号" maxlength="18" placeholder="请输入身份证号" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field v-model="kfCode" clearable label="投资客服" placeholder="请输入客服邀请码（选填）" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field @input="changeInput" v-model="telNum" clearable label="手机号" maxlength="11" placeholder="请输入手机号" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field @input="changeInput" v-model="smsCode" center clearable label="验证码" placeholder="请输入验证码">
+            <van-button @click="getVerify" :disabled="countdown < 60" slot="button" size="small" type="default">{{countdown == 60 ? '获取验证码' : countdown + 's'}}</van-button>
+          </van-field>
+        </van-cell-group>
+      </div>
+      <div class="fill"></div>
+      <div class="section">
+        <div class="payType">
+          <h6>选择支付方式</h6>
+          <div class="iconType"><img src="./images/pay/weixin_button_click@2x.png" alt=""></div>
+        </div>
+        <div class="agrment">
+          <p v-if="info">{{info.agreementtext}}</p>
+        </div>
+        <div class="risk">
+          <input class="hide" type="checkbox" name="risk" id="risk" value="risk" @input="changeInput">
+          <label @click="isRisk = !isRisk" for="risk" v-if="info"><i class="check"></i><span v-html="info.newagreementtext"> 确认支付即表示同意《海能投顾产品服务协议》并已阅读《风险揭示书》</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <van-button :disabled="isSubmit" type="default" @click="purchase">365元 确认支付</van-button>
+    </div>
+  </div>
+</body>
+
+</html>

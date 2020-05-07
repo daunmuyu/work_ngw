@@ -1,0 +1,48 @@
+<div class="customer-detail">
+  <Card dis-hover>
+    <p slot="title">{{title}}</p>
+    <Form ref="customer" :model="customer" :rules="customerValidate" :label-width="80">
+      <FormItem label="资金账号" prop="fundAccount">
+        <Input v-model="customer.fundAccount" :disabled="$route.name !== 'newCustomer'" placeholder="请输入资金账号" style="width: 150px"></Input>
+      </FormItem>
+      <FormItem label="真实姓名">
+        <Input v-model="customer.realName" :disabled="$route.name === 'customerDetail'" placeholder="请输入真实姓名" style="width: 150px"></Input>
+      </FormItem>
+      <FormItem label="期货公司">
+        <RadioGroup v-model="customer.brokerType">
+          <Radio :disabled="$route.name === 'customerDetail' || $route.name === 'editCustomer'" v-for="item in brokerList" :label="item.brokerType" :key="item.value">{{item.brokerName}}</Radio>
+        </RadioGroup>
+      </FormItem>
+      <FormItem label="状态">
+        <RadioGroup v-model="customer.status">
+          <Radio :disabled="$route.name === 'customerDetail'" v-for="status in customerStatusList" :label="status.value" :key="status.value">{{status.label}}</Radio>
+        </RadioGroup>
+      </FormItem>
+      <FormItem label="直播间">
+        <CheckboxGroup v-model="customer.roomIds" @on-change="roomIdsChanged" style="width: 200px; float: left">
+          <Checkbox v-for="live in liveList" :label="live.liveRoomID" :key="live.liveRoomID" :disabled="$route.name === 'customerDetail'" style="display:block">{{live.liveTitle}}</Checkbox>
+        </CheckboxGroup>
+        <!-- <CheckboxGroup v-model="customer.strategyIds" style="width: 200px; float: left">
+          <Checkbox v-for="live in liveList"  :disabled="$route.name === 'customerDetail' || customer.roomIds.indexOf(live.liveRoomID) === -1" :label="live.liveRoomID" :key="live.liveRoomID" style="display:block">订阅</Checkbox>
+        </CheckboxGroup> -->
+      </FormItem>
+      <!-- <FormItem label="策略">
+        <CheckboxGroup v-model="customer.strategyIds2" @on-change="strategyIdsChanged" style="width: 200px; float: left">
+          <Checkbox v-for="strategy in strategyList" :label="strategy.strategyID" :key="strategy.strategyID" :disabled="$route.name === 'customerDetail'" style="display:block">{{strategy.strategyName}}</Checkbox>
+        </CheckboxGroup>
+        <CheckboxGroup v-model="customer.followStrategyIds" style="width: 200px; float: left">
+          <Checkbox v-for="strategy in strategyList" :disabled="$route.name === 'customerDetail' || customer.strategyIds2.indexOf(strategy.strategyID) === -1"  :label="strategy.strategyID" :key="strategy.strategyID" style="display:block">允许云托管</Checkbox>
+        </CheckboxGroup>
+      </FormItem> -->
+      <FormItem label="指标" v-if="$route.name !== 'newCustomer'">
+        <CheckboxGroup v-model="indicatorListCheck" @on-change="indicatorChange"  style="width: 200px; float: left">
+          <Checkbox v-for="item in indicatorList" :label="item.IndicatorID" :key="item.IndicatorID" :disabled="$route.name === 'customerDetail'" style="display:block">{{item.Name}}</Checkbox>
+        </CheckboxGroup>
+      </FormItem>
+      <FormItem>
+        <Button @click="$router.push('/customer')">返回</Button>
+        <Button  v-if="$route.name !== 'customerDetail'" type="primary" @click="saveHandler" style="margin-left: 8px">保存</Button>
+      </FormItem>
+    </Form>
+  </Card>
+</div>

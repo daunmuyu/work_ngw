@@ -1,0 +1,165 @@
+.share-line {
+  stroke: #056cfc;
+  fill: none;
+  stroke-width: 1px;
+}
+
+.share-area {
+  fill: #dfecfe;
+}
+
+.share-ma {
+  stroke: #ffc132;
+  stroke-width: 1px;
+  fill: none;
+}
+
+.share-vol {
+  stroke: #f24957;
+  fill: none;
+  stroke-width: 1px;
+}
+
+.up-rect {
+  fill: #f24957;
+  stroke: #f24957;
+}
+
+.up-wick {
+  stroke: #f24957;
+}
+
+.down-rect {
+  fill: #1dbf60;
+  stroke: #1dbf60;
+}
+
+.down-wick {
+  stroke: #1dbf60;
+}
+
+.vol,
+.up-vol {
+  fill: #f24957;
+}
+
+.down-vol {
+  fill: #1dbf60;
+}
+
+.k-line {
+  stroke: #87d9f5;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.d-line {
+  stroke: #fc64ca;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.j-line {
+  stroke: #ffc33a;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.rsi6-line {
+  stroke: #87d9f5;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.rsi12-line {
+  stroke: #fc64ca;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.rsi24-line {
+  stroke: #ffc33a;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.ma5 {
+  stroke: #ffc132;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.ma10 {
+  stroke: #80d7f5;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.ma20 {
+  stroke: #fc5fc8;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.dif-line {
+  stroke: #ffd26b;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.dea-line {
+  stroke: #8ddbf7;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.macd-up {
+  fill: #f24957;
+}
+
+.macd-down {
+  fill: #1dbf60;
+}
+
+.axis {
+  path {
+    stroke-dasharray: 5, 3;
+    stroke: #ddd;
+  }
+}
+
+.x.axis,.ix.axis {
+  path {
+    stroke-width: 0;
+  }
+}
+
+.sharechart{
+  .x.axis,.ix.axis {
+    g:nth-child(2) line {
+      stroke-width: 0;
+    }
+  }
+}
+.tick {
+  line {
+    stroke-dasharray: 5, 3;
+    stroke: #ddd;
+    stroke-width: 0.3;
+  }
+}
+
+.y-line,
+.x-line,
+.indicator-line {
+  stroke: black;
+  stroke-width: 0.5px;
+}
+
+.cross {
+  font-size: 12px;
+}
+
+.main-charts::hover {
+  cursor: crosshair;
+}

@@ -1,0 +1,11 @@
+.recommend-stock {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.stock-item {
+  &:hover {
+    // background-color: #dedede!important;
+    color: #49a9ee;
+  }
+}

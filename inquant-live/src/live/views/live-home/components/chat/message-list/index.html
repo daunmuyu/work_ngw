@@ -1,0 +1,51 @@
+<div class="message-list-live-home" ref="msgList">
+  <div class="msg-wrapper">
+    <!-- <Col class="demo-spin-col" span="8" v-show="loading">
+        <Spin fix>
+            <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon> 
+            <div>Loading...</div>
+        </Spin>
+      </Col> -->
+    <div class="no-data" v-show="list.length === 0">
+      暂时没有更多数据了~
+    </div>
+    <div class="chatmsg" v-for="item in list" v-if="1 || item.isAudit == 1 || item.name === $root.temName"
+      :key="item.id">
+      <div class="msg-phone">
+        <img class="head-img" :src="item.headimg || defaultImg" alt="">
+      </div>
+      <div class="msg-main">
+        <div class="chatmsg_infos clearfix">
+          <div class="name-msg-wrapper">
+            <!-- <div class="avatar" ></div> -->
+            <div class="chatmsg_name f-l">
+              <span :class="{'red-name': time || +item.roleId === 3}">{{item.name}}</span>
+              <!-- <span v-if="new Date(new Date(item.addtime*1000)).toDateString() != new Date().toDateString()" class="message-time">{{ format(new Date(item.addtime*1000), "MM月dd日") }}</span> -->
+              <span class="message-time" :class="['message-time', {'right-time': !time}]"
+                v-show="isToday(item.addtime)">{{ format(new Date(item.addtime*1000), "hh:mm:ss") }}</span>
+              <span class="message-time" :class="['message-time', {'right-time':
+                !time}]"
+                v-show="!isToday(item.addtime)">{{ format(new Date(item.addtime*1000), "yy-MM-dd hh:mm:ss") }}</span>
+              <!-- <div :class="['msg-content', {'red-font': item.flag }]" v-html="getMsgContent(item)"></div> -->
+              <!-- <img :src='pic' alt="" width="100%" height="auto" > -->
+              <p class="img" v-show="item.IsViewPoint && time">
+                核心观点    
+              </p>
+             </div>
+          </div>
+        </div>
+        <div class="chatmsg_cont chatmsg_infos clearfix">
+          <div v-if="item.ext.mstype === 1" v-html="getMsgContent(item)" class="chatmsg_msg f-l">
+          </div>
+          <div v-else-if="item.ext.mstype === 3" v-html="getReplyContent(item)" class="chatmsg_msg f-l">
+          </div>
+          <div v-else class="chatmsg_msg f-l">
+            <lightbox album="" :src="item.ext.url" style="width:300px">
+              <img :style="{width:'100px',height:(item.ext.height/item.ext.width)*100 +'px'}" :src="item.attach">
+            </lightbox>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+@import '../../../lib/reset.css';
+
+$browser-default-font-size: 18.75px !default;
+// px2rem
+@function size($size) {
+  $width: 375;
+  $scale: 10;
+  @return ($size / $width * $scale) * 1rem;
+}
+#app {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+[v-cloak] {
+  display: none;
+}

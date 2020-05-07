@@ -1,0 +1,59 @@
+.employee-detail {
+  .phone-img {
+    width: 60px;
+    cursor: pointer;
+    height: 60px;
+    border-radius: 50%;
+
+    & + .phone-cover {
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,.6);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 60px;
+      font-size: 24px;
+      color: #fff;
+      &:hover {
+        display: block;
+      }
+    }
+
+    &:hover+.phone-cover {
+      display: block;
+    }
+  }
+
+  .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+    &+ label {
+      background-color: #fff;
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      border: 1px dashed #d7dde4;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &+ label:hover,
+    &:focus + label {
+      border: 1px dashed #5cadff;
+    }
+  }
+}

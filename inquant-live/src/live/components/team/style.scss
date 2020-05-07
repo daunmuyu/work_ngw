@@ -1,0 +1,35 @@
+.team {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 99;
+  .join-btn {
+    width: 70px;
+    height: 24px;
+    background: red;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #888;
+    cursor: pointer;
+    float: right;
+  }
+  .team-panel{
+    width: 180px;
+    background: #fff;
+    margin-top: 24px;
+    // height: 210px;
+    .team-slogan{
+      font-size: 18px;
+      line-height: 1.2;
+      padding-left: 15px;
+      padding-top: 10px;
+    }
+    .team-qrcode-wraper{
+      padding: 15px;
+      .team-qrcode{
+        width: 150px;
+      }
+    }
+  }
+}

@@ -1,0 +1,224 @@
+<div id="indexpage">
+  <!-- <CustomerService></CustomerService> -->
+  <!-- <Top/> -->
+  <div class="banner">
+    <h3 class="title">卓越的金融交易服务商</h3>
+    <p class="des">专为亚洲投资者量身定制的指数差价合约CFD产品交易服务平台</p>
+    <a v-if="$root.usertoken" href="javascript:;" @click="toTrade" class="btn">立即交易</a>
+    <a v-else href="javascript:;" @click="regClick" class="btn">注册</a>
+  </div>
+  <div class="content">
+    <div class="section cfd">
+      <img src="../../../static/img/the_outer_cfd.png" alt="" class="section-flag">
+      <div class="h-title">
+        为什么选择交易指数差价合约CFD产品
+        <div class="flag"></div>
+      </div>
+      <div class="des clearfix am-g">
+        <div class="item fl">
+          <img src="../../../static/img/position_roundtrip.png" class="flag" alt="">
+          <h4 class="title">双向交易</h4>
+          <p class="innerdes">双向交易,涨跌都可赚钱</p>
+        </div>
+        <div class="item fl">
+          <img src="../../../static/img/position_flexible.png" class="flag" alt="">
+          <h4 class="title">低保证金</h4>
+          <p class="innerdes">无息融资,以小博大</p>
+        </div>
+        <div class="item fl">
+          <img src="../../../static/img/position_diversity.png" class="flag" alt="">
+          <h4 class="title">T+0交易模式</h4>
+          <p class="innerdes">短线高频操作更快快速获利</p>
+        </div>
+        <div class="item fl">
+          <img src="../../../static/img/position_leverage.png" class="flag" alt="">
+          <h4 class="title">杠杆交易</h4>
+          <p class="innerdes">低投入高收益,玩转国际市场</p>
+        </div>
+      </div>
+    </div>
+    <div class="section pinzhong">
+      <img src="../../../static/img/trades_variety.png" alt="" class="section-flag">
+      <div class="h-title">
+        汇聚全球热门交易品种
+        <div class="flag"></div>
+      </div>
+      <p class="h-des">行情实时刷新,毫秒级下单速度,让交易更简单</p>
+      <div class="content am-g clearfix">
+        <div class="item left fl">
+          <div class="tabs clearfix">
+            <div class="col col1">交易品种</div>
+            <div class="col col2">最新价</div>
+            <div class="col col3">涨跌幅</div>
+          </div>
+          <div class="list clearfix">
+              <div v-for="(item,index) in contractList.slice(0, middleIndex)" class="contract-item clearfix" :class="{'red': getColor(item.updown) === 'red', 'green' : getColor(item.updown) === 'green', 'gray': getColor(item.updown) === 'gray', 'changed': watchList[index] && watchList[index].changed}">
+                  <div class="col col1">{{item.symbolname}}</div>
+                  <div class="col col2">{{item.nowv}}</div>
+                  <div class="col col3">{{item.updownrate}}</div>
+                </div>
+          </div>
+        </div>
+        <div class="item right fl">
+          <div class="tabs clearfix">
+            <div class="col col1">交易品种</div>
+            <div class="col col2">最新价</div>
+            <div class="col col3">涨跌幅</div>
+          </div>
+          <div class="list clearfix">
+            <div v-for="(item,index) in contractList.slice(-middleIndex)" class="contract-item clearfix" :class="{'red': getColor(item.updown) === 'red', 'green' : getColor(item.updown) === 'green', 'gray': getColor(item.updown) === 'gray', 'changed': watchList[index + middleIndex] && watchList[index].changed}">
+              <div class="col col1">{{item.symbolname}}</div>
+              <div class="col col2">{{item.nowv}}</div>
+              <div class="col col3">{{item.updownrate}}</div>
+            </div>
+          </div>
+        </div>
+        <a href="javascript: void" @click="toTrade" class="trade-btn">
+          立即交易
+        </a>
+      </div>
+    </div>
+    <div class="section why clearfix">
+      <img src="../../../static/img/qizhihui.png" alt="" class="section-flag">
+      <div class="h-title">
+        为什么选择人人期指
+        <div class="flag"></div>
+      </div>
+      <div class="content am-g clearfix">
+        <div class="item item1">
+          <h4 class="title">合规交易</h4>
+          <p class="des">
+            新西兰最权威机构监管,最高级别合规审核
+          </p>
+        </div>
+        <div class="item item2">
+          <h4 class="title">资金安全</h4>
+          <p class="des">
+            资金通过第三方支付即时到账，受权威金融机构监管
+          </p>
+        </div>
+        <div class="item item3">
+          <h4 class="title">极速开户</h4>
+          <p class="des">
+            免除繁琐流程，极速开户体验
+          </p>
+        </div>
+        <div class="item item4">
+          <h4 class="title">产品多样</h4>
+          <p class="des">
+            同步全球市场，支持全球热门品种
+          </p>
+        </div>
+        <div class="item item5">
+          <h4 class="title">实时行情</h4>
+          <p class="des">
+            实时行情同步交易所，行情资讯快人一步
+          </p>
+        </div>
+        <div class="item item6">
+          <h4 class="title">自动兑换</h4>
+          <p class="des">
+            货币自动兑换，无需手动操作
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="section safe">
+      <img src="../../../static/img/safety.png" alt="" class="section-flag">
+      <div class="h-title">
+        资金安全有保障
+        <div class="flag"></div>
+      </div>
+      <div class="content clearfix">
+        <div class="items1">
+          <div class="item">
+            <img src="../../../static/img/aqfsp.png" alt="">
+            <h4 class="title">
+              Financial Service Providers
+            </h4>
+            <p class="des">
+              新西兰注册金融服务商
+            </p>
+            <p class="hint">
+              (编号:FSP476086)
+            </p>
+          </div>
+          <div class="item">
+            <img src="../../../static/img/aqsipc.png" alt="">
+            <h4 class="title">
+              Securities Investor Protection Corporation
+            </h4>
+            <p class="des">
+              寰盈国际集团持有新西兰牌照,资金受银行监管,交易通道受美国SIPC保障
+            </p>
+          </div>
+          <div class="item">
+            <img src="../../../static/img/aqasb.png" alt="">
+            <h4 class="title">ASB Bank</h4>
+            <p class="des">ASB银行是新西兰体系最具规模,并能提供综合性金融业务的银行</p>
+            <p class="hint"></p>
+          </div>
+        </div>
+        <div class="items2">
+          <div class="item">
+            <img src="../../../static/img/aqzgdzsh.png" alt="">
+            <h4 class="title">
+              中国电子商会
+            </h4>
+            <p class="des">
+              寰盈国际集团是中国电子商会会员单位
+            </p>
+            <p class="hint"></p>
+          </div>
+          <div class="item">
+            <img src="../../../static/img/aqpicc.png" alt="">
+            <h4 class="title">
+              中国人保财险
+            </h4>
+            <p class="des">
+              人人期指与中国人民财产保险股份有限公司合作签署账户安全责任保险条款
+            </p>
+            <p class="hint"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="qrcode" ref="qrcode" class="section down">
+      <img src="../../../static/img/logo.png" alt="" class="section-flag">
+      <div class="h-title">
+        下载人人期指APP 进入全球交易市场
+        <div class="flag"></div>
+      </div>
+      <div class="content clearfix">
+        <div class="list clearfix am-g">
+          <div class="item">
+            <img src="../../../static/img/xzkaihu_icon.png" alt="">
+            <h4 class="title">开户</h4>
+            <p class="des">下载APP,立即开户开启交易之旅</p>
+            <img src="../../../static/img/jiantou_icon.png" alt="" class="arrow">
+          </div>
+          <div class="item">
+            <img src="../../../static/img/xzrujin_icon.png" alt="">
+            <h4 class="title">入金</h4>
+            <p class="des">实名认证,使用银联卡入金,实时到账</p>
+            <img src="../../../static/img/jiantou_icon.png" alt="" class="arrow">
+          </div>
+          <div class="item">
+            <img src="../../../static/img/xzkaihu_icon.png" alt="">
+            <h4 class="title">行情</h4>
+            <p class="des">查看全球最热门的交易品种实时行情</p>
+            <img src="../../../static/img/jiantou_icon.png" alt="" class="arrow">
+          </div>
+          <div class="item">
+            <img src="../../../static/img/xzjiaoyi_icon.png" alt="">
+            <h4 class="title">交易</h4>
+            <p class="des">便捷操作,急速下单助您轻松掌握盈利时机</p>
+            <!-- <img src="../../../static/img/jiantou_icon.png" alt="" class="arrow"> -->
+          </div>
+        </div>
+        <img src="../../../static/img/phone.png" class="phone" alt="">
+      </div>
+    </div>
+  </div>
+  <!-- <Bottom/> -->
+</div>

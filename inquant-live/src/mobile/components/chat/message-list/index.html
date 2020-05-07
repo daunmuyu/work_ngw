@@ -1,0 +1,67 @@
+<div  class="message-list" ref="msgList">
+    <mt-loadmore id="load-more" :top-method="loadTop" ref="loadmore">
+      <div class="msg-list" id="list">
+        <div class="item" v-for="item in list" v-if="item.isAudit == 1" :key="item.id">
+          <div class="user-img">
+            <div class="img-wrap">
+              <img class="head-img" :src="item.headimg || defaultImg" alt="">
+            </div>
+          </div>
+          <div class="user-content-wrap">
+            <div class="send">
+              <div class="top">
+                <div class="name gary-color">
+                  <span>{{item.name}}</span>
+                  <img class="flag" v-if="getUserIcon(item.roleId).length > 0" :src="getUserIcon(item.roleId)" alt="" />
+                </div>
+                <div class="time gary-color">{{timeFormat(new Date(parseInt(item.addtime+'000',10)))}}</div>
+              </div>
+              <div class="content">
+                <template v-if="item.ext.mstype===1">
+                  <div v-html="getMsgContent(item)"></div>
+                </template>
+                <div v-else-if="item.ext.mstype === 3" v-html="getReplyContent(item)" class="chatmsg_msg f-l">
+                </div>
+                <template v-else>
+                  <!-- <lightbox album="" :src="item.ext.url" style="width:300px"> -->
+                  <img :style="{width:'100%',height:'100%',minWidth:'100px',minHeight:(item.ext.height/item.ext.width)*100 +'px'}" :src="item.attach" @click="showImg(item.attach)">
+                  
+                  <!-- </lightbox> -->
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="img-container" v-show="fullImage" @click="showImg(0)">
+        <img :src="fullImageUrl" alt="" class="show-img">
+      </div>
+    </mt-loadmore>
+  <!-- <div class="msg-wrapper">
+    <div class="chatmsg" v-for="item in list">
+        <div class="msg-phone">
+          <img class="head-img" :src="item.headimg || defaultImg" alt="" >
+        </div>
+        <div class="msg-main">
+          <div class="chatmsg_infos clearfix">
+            <div class="chatmsg_name f-l">
+              {{item.name}}
+            </div>
+            <img v-if="getUserIcon(item.roleId).length > 0" :src="getUserIcon(item.roleId)" alt="" class="chatmsg_flag f-l" />
+            <div class="chatmsg_time f-l">
+              {{new Date( parseInt(item.addtime+'000',10)).toLocaleString()}}
+            </div>
+          </div>
+          <div class="chatmsg_cont clearfix">
+            <div v-if="item.ext.mstype === 1" v-html="getMsgContent(item)" class="chatmsg_msg f-l">
+            </div>
+            <div v-else class="chatmsg_msg f-l">
+              <lightbox album="" :src="item.ext.url" style="width:300px">
+                <img :style="{width:'100px',height:(item.ext.height/item.ext.width)*100 +'px'}" :src="item.attach">
+              </lightbox>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div> -->
+</div>

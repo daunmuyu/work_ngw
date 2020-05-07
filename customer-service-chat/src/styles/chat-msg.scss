@@ -1,0 +1,205 @@
+@import '../styles/base.scss';
+
+.chatMsg {
+  background-color: $bg-FFFFFF;
+  height: 100%;
+  text-align: left;
+
+  .chat-edit {
+    width: 100%;
+    height: 90px;
+    @include flexAic;
+
+    .chat-edit-input {
+      width: 90%;
+      height: 70px;
+      margin: 0 auto;
+      padding: 15px;
+      overflow-y: visible;
+      overflow-x: hidden;
+      word-break: break-all;
+      color: $bg-303841;
+      border: 1px solid $bg-99A8B4;
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .chat-url {
+    width: 28px;
+    height: 28px;
+    background-image: url('../assets/icon/icon-附件.png');
+
+    &:hover {
+      background-image: url('../assets/icon/icon-附件-dianji.png');
+    }
+  }
+
+  .chat-file {
+    width: 28px;
+    height: 24px;
+    background-image: url('../assets/icon/icon-文件.png');
+
+    &:hover {
+      background-image: url('../assets/icon/icon-文件-dianji.png');
+    }
+  }
+
+  .chat-emjio {
+    margin: 0 15px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    background-image: url('../assets/icon/icon-face.png');
+
+    &:hover {
+      background-image: url('../assets/icon/icon-face-dianji.png');
+    }
+  }
+  .chat-history {
+    width: 28px;
+    height: 28px;
+    background-image: url('../assets/icon/icon_lishi.png');
+
+    &:hover {
+      background-image: url('../assets/icon/icon_lishi_click.png');
+    }
+  }
+  .chat-zixun {
+    width: 28px;
+    height: 28px;
+    background-image: url('../assets/icon/icon_zixun.png');
+
+    &:hover {
+      background-image: url('../assets/icon/icon_zixun_click.png');
+    }
+  }
+
+  .chaticon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  .chat-btn-pane {
+    height: 60px;
+    position: relative;
+    @include flexAic;
+    flex-direction: row-reverse;
+
+    &>div {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .chat-send {
+      button {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background-color: $bg-55D48B;
+        color: $bg-FFFFFF;
+        font-size: 18px;
+        border-radius: 20px;
+        height: 40px;
+        width: 100px;
+      }
+    }
+  }
+}
+
+.chatEmoji {
+  width: 400px;
+  overflow: hidden;
+
+  .imgemoji {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    margin: 2px;
+    border: 1px solid #FFF;
+    cursor: pointer;
+
+    img {
+      width: 32px;
+      height: 32px;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+.tipsInfo {
+  color: $bg-6A7681;
+  font-size: 14px;
+}
+
+#videoMain {
+  position: absolute;
+  right: 10000%;
+  top: 1000%;
+}
+
+div[contenteditable]:empty:before {
+  content: attr(placeholder);
+  color: #CCCCCC;
+}
+
+div[contenteditable]:focus {
+  content: none;
+}
+
+.phoneticWriting {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 80px;
+  text-align: center;
+  height: 24px;
+  line-height: 22px;
+  border: 1px solid $bg-2A4159;
+  border-radius: 12px;
+  font-size: 12px;
+  color: $bg-2A4159;
+  overflow: hidden;
+  display: flex;
+  & > div {
+    width: 50%;
+    height: 100%;
+    &.active {
+      background-color: $bg-2A4159;
+      color: $bg-FFFFFF;
+    }
+  }
+}
+
+.chat-voice {
+  height: 90px;
+  @include flexAic;
+  justify-content: center;
+  margin: 0 15px;
+  border-bottom: 1px solid $bg-E3E7E7;
+  & > div {
+    @include flexAic;
+    margin: 0 10px;
+    color: $bg-2A4159;
+    cursor: pointer;
+    img, span {
+      display: block;
+    }
+    span {
+      padding-left: 10px;
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+<div class="layout">
+  <!-- <Manage class="manage-page"></Manage> -->
+  <div class="navigator-wrapper">
+      <Navigate
+      :roomList="roomList"
+      :curRoom="curRoom"
+      :jinyanList="jinyanList"
+      :userName="$root.loginInfo.userName"
+      @roomSelected="roomSelected"
+      @cancelJY="cancelJY"
+      @toStrategy="toStrategy"
+      @toSpeak="toSpeak"
+      @logout="logout"
+      ></Navigate>
+  </div>
+  <div class="container">
+      <div class="main">
+        <div class="video-container">
+          <video-player :vedioInfo="videoObj" :currentVideo="currentGoodVideo"></video-player>
+        </div>
+        <div class="info-container">
+          <live-info :title="curRoom.roomName" :content="curRoom.liveDesc"></live-info>
+        </div>
+      </div>
+      <div class="middle">
+        <Tabs type="card">
+          <TabPane label="大咖观点">
+            <div class="header">
+                <div class="now-date">{{ format(new Date(activeTeacerDate), 'MM-dd')}}</div>
+                <div class="teacher-header">
+                    选择查询时间<DatePicker :options="options" v-model="selectDate" type="date" placeholder="请选择查询时间" style="width: 150px; margin-left: 10px"></DatePicker>
+                </div>
+                <Button @click="getTeacherMessage({
+                  date: format(new Date(selectDate), 'yyyy-MM-dd'),
+                  type: false
+                })">查询</Button>
+            </div>
+              <MessageList
+                :list="teacherMessageList"
+                @moreList="getTeacherMessage"
+                :jinyan-list="jinyanList"
+                :editorPlaceHolder="editorPlaceHolder"
+                @sendMessage="sendMessage"
+                @clearMsgList="clearMsgList"
+                @delMsg="delTeacerMsg"
+                @jinyan="jinyan"
+                @checkMsg="checkMsg"
+                @setReply="setReply"
+              ></MessageList>
+          </TabPane>
+        </Tabs>
+        <!-- <MessageList
+          :list="messageList"
+        ></MessageList> -->
+      </div>
+      <div class="left">
+        <Tabs type="card">
+          <TabPane label="聊天室">
+            <chat
+            @moreList="getMessageList"
+            :message-list="messageList"
+            :jinyan-list="jinyanList"
+            :editorPlaceHolder="editorPlaceHolder"
+            @sendMessage="sendMessage"
+            @clearMsgList="clearMsgList"
+            @delMsg="delMsg"
+            @jinyan="jinyan"
+            @checkMsg="checkMsg"
+            @setReply="setReply"
+            ></chat>
+          </TabPane>
+        </Tabs>
+      </div>
+    </div>
+  </div>

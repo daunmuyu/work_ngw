@@ -1,0 +1,12 @@
+node_modules
+
+.idea
+bin
+
+app/src/module
+dist
+www
+
+gulpfile.js
+tools.js
+app/alias.js

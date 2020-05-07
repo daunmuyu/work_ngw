@@ -1,0 +1,46 @@
+.market-chart-main {
+    width: 92%;
+    height: 100%;
+
+    &.h75 {
+        height: 75%;
+    }
+}
+
+.market-chart-bottom {
+    width: 90%;
+
+    &.h15 {
+        height: 15%;
+    }
+}
+
+.market-chart-bottom-bar {
+    width: 80%;
+    background-color: #f8f8f8;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 60px;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+
+    a {
+        text-decoration: none;
+        position: relative;
+        display: block;
+        font-size: 12px;
+        height: 100%;
+        margin: 0 15px;
+        padding: 0 3px;
+        text-align: center;
+        color: #666;
+        -moz-box-flex: 1;
+        -webkit-box-flex: 1;
+        box-flex: 1;
+
+        &.active {
+            color: #659df0;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+body {
+  font-size: 14px;
+  background-color: #f4f4f4;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.btn {
+  border: 1px solid red;
+  background: #fff;
+}
+
+// .container {
+//   margin: 0 auto;
+//   width: 1200px;
+// }
+
+.clear {
+  clear: both;
+  zoom: 1;
+  overflow: hidden;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+.no-b-border {
+  border-bottom: none;
+}
+// .border-color{}
+.pointer {
+  cursor: pointer!important;
+}
+
+.no-data {
+  padding: 16px;
+  text-align: center;
+  color: #dedede;
+}
+
+.form {
+  text-align: center;
+}
+
+.modal-btn {
+  text-align: center;
+  margin-top: 20px;
+  button {
+    margin: 0 20px;
+  }
+}

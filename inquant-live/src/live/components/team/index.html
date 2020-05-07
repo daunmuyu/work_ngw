@@ -1,0 +1,11 @@
+<div class="team">
+  <div v-if="slogan && qrcode" class="join-btn" @click="changeShowPanel">
+    加战队
+  </div>
+  <div class="team-panel" v-show="showPanel">
+    <div class="team-slogan">{{slogan}}</div>
+    <div class="team-qrcode-wraper">
+      <img class="team-qrcode" :src="qrcode" alt="">
+    </div>
+  </div>
+</div>

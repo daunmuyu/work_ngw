@@ -1,0 +1,101 @@
+@import "./reset.scss";
+@import './flex.scss';
+@media only screen and (max-width: 640px) {
+  .banner {
+    transform: scale(0.5);
+  }
+}
+
+.container {
+  width: 100%;
+  // min-height: 810px;
+  .top {
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size: contain;
+    width: 100%;
+    min-height: 375px;
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    @include flex-direction(column);
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .banner {
+      color: #fff;
+      text-align: center;
+      font-size: 42px;
+    }
+    .banner-title {
+      color: #fff;
+      font-size: 20px;
+      text-align: center;      
+    }
+  }
+}
+
+.tips {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'PingFangSC-Regular';
+  position: relative;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 40px 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 46px;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f9742b ;
+    font-weight: bold;
+  }
+}
+
+.times {
+  margin: 20px auto;
+  background-image: url("../img/trade/border1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 134px;
+  height: 44px;
+  line-height: 40px;
+  text-align: center;
+
+  span {
+    font-size: 14px;
+    color: #f9742b;
+    background-image: url("../img/trade/clock1.png");
+    background-position: right center;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+  }
+}
+
+.dls {
+  width: 33.33%;
+  text-align: center;
+
+  dd {
+    margin-top: -5px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  img {
+    max-width: 80%;
+  }
+}
+$HEIGHT: 60px;
+$THEME-COLOR: #f9742b;

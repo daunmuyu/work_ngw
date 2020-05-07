@@ -1,0 +1,13 @@
+.role-add-wrap {
+  padding: 16px 0;
+  .input-wrap {
+    .name {
+      min-width: 60px;
+      height: 26px;
+      line-height: 26px;
+    }
+  }
+}
+input[type="file"] {
+  border: none;
+}

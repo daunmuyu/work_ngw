@@ -1,0 +1,148 @@
+<div :class="['live-home clearfix', isDayMode]"  :style="bg">
+  <div class="live-home-header" v-show="false">
+    <p>
+      <svg t="1529909377618" class="icon btn" style="width: 20px; height: 15px" viewBox="0 0 1046 1024" version="1.1"
+        xmlns="http://www.w3.org/2000/svg" p-id="2885" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.4296875"
+        height="20">
+        <path
+          d="M939.501314 218.141898h-230.101022l119.591241-130.46657a52.321168 52.321168 0 0 0-77.136351-70.708321l-184.394744 201.174891h-88.497518L294.568175 16.967007a52.321168 52.321168 0 0 0-77.13635 70.708321l119.591241 130.46657H106.922044A107.108905 107.108905 0 0 0 0 325.213431v591.715036A107.108905 107.108905 0 0 0 106.922044 1024h832.57927A107.108905 107.108905 0 0 0 1046.423358 916.928467V325.213431a107.108905 107.108905 0 0 0-106.922044-107.071533z"
+          fill="#FF7700" p-id="2886"></path>
+        <path
+          d="M663.694015 603.562044l-255.3273-143.621606a26.160584 26.160584 0 0 0-38.97927 22.79708v287.280584a26.160584 26.160584 0 0 0 38.97927 22.79708l255.3273-143.621605a26.160584 26.160584 0 0 0 0-45.631533z"
+          fill="#FFFFFF" p-id="2887"></path>
+      </svg>
+      <span class="go-home" @click="$router.push('/')">全部直播></span>
+      <span class="room-name">{{roomName}}</span>
+    </p>
+    <p class="notice">温馨提示：您现在查看的是{{roomName}}内部策略直播室</p>
+  </div>
+  <div class="live-home-content clearfix" style="padding:10px 0">
+    <div class="live-content-left">
+      <div class="bug"></div>
+      <div class="go-back" @click="$router.push('/')" v-show="!isWeb">
+        <span class="back-font">< 后退</span>
+        <span class="notice">您正在看的是{{roomName}}直播间</span>
+      </div>
+      <div class="today-thinking left-square">
+        <div class="content-header">
+          今日思路
+        </div>
+        <p class="content scroll-style" v-html="getMessage(roomInfo.thinking)">
+
+        </p>
+      </div>
+      <div class="live-status left-square">
+        <div class="content-header">
+          <span>视频直播</span>
+        </div>
+        <div class="live-content" v-show="!isLive">
+          当前暂无直播，<br />去聊天和老师互动吧！
+        </div>
+        <div class="live-wrapper" style="text-align: center" v-show="isLive" @click="goLive()">
+          <img :src="cover" alt="" width="80%">
+          <p class="font-img">
+            视频直播中 <img src="https://h5.inquant.cn/future/d-img/live.gif" alt="" width="15px">
+          </p>
+        </div>
+      </div>
+      <div class="teacher-introduce left-square" ref="introduce">
+        <div class="content-header">
+          <span>老师介绍</span>
+        </div>
+        <div class="content">
+          <div class="img-content">
+            <img class="teacher" :src="teacherInfo.headImg || defaultImg" alt="">
+            <div class="teacher-name">
+              {{ getRoleName(teacherInfo.roleId) }}{{ teacherInfo.name }}
+            </div>
+          </div>
+          <div class="font-content scroll-style">
+            <p v-html="getMessage(teacherInfo.details)"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="live-content-middle" ref="middle">  
+      <div class="teacher-view">
+        <Tabs active-key="key1" :class='selectFont | chooseFont' @on-click="changeNav" :value="navTab">
+          <Tab-pane label="大咖直播间" name="key1">
+            <div class="tab-header">
+              <!-- <ul class="choose-teacher">
+                <label>查看:</label>
+                <li v-for="(item,index) in lookDescNav" :key="index" :class="{'active-item':index==selectLook}"
+                  @click="chooseNav(index,'look')">{{item}}
+                </li>
+              </ul> -->
+              <ul class="choose-font">
+                <label>选择字体:</label>
+                <li v-for="(item, index) in chooseFont" :key="index" :class="{'active-item':index==selectFont}"
+                  @click="chooseNav(index,'font')">{{item}}
+                </li>
+              </ul>
+            </div>
+            <div class="teacher-view-detail scroll-style" v-show="selectLook==1">
+              <Chat :messageList="teacherMessageList" @moreList="getTeacherMessage" :time="true" :userInfo="userInfo" :isLive="false">
+              </Chat>
+            </div>
+          </Tab-pane>
+          <Tab-pane label="核心观点" name="key2">
+            <div class="tab-header">
+              <!-- <div class="select-wrapper">
+                <label>选择老师:</label>
+                <Select v-model="teacherId" style="width:100px" clearable>
+                  <Option v-for="item in teacherList" :value="item.Id" :key="item.Id">{{ item.userName }}</Option>
+                </Select>
+              </div> -->  
+              <ul class="choose-date">
+                <label>时间:</label>
+                <li v-for="(item,index) in dateNav" :key="index" :class="{'active-item':index==selectDate}"
+                  @click="chooseNav(index,'date')">{{item.title}}
+                </li>
+              </ul>
+              <ul class="choose-font">
+                <label>选择字体:</label>
+                <li v-for="(item, index) in chooseFont" :key="index" :class="{'active-item':index==selectFont}"
+                  @click="chooseNav(index,'font')">{{item}}
+                </li>
+              </ul>
+            </div>
+            <div class="teacher-view-detail scroll-style">
+              <Chat :messageList="powerMessages" @moreList="getPowerPoint" :time="true" :userInfo="userInfo"
+                :isLive="false">
+              </Chat>
+            </div>
+          </Tab-pane>
+          <Tab-pane label="学习日志" name="key3">
+            <div class="pdf-kong" v-if="studyList.length==0">
+                  暂时没有学习日志
+            </div>
+            <div class="learn-list" v-if="isPdfListShow">
+              <ul>
+                <li v-for="(item,index) in studyList" :key="index" @click="goPdf(item)">
+                  <span class="date">{{item.addTime.substring(5,16)}}</span>
+                  <span class="title">{{item.title}}.pdf</span>
+                </li>
+              </ul>
+            </div>
+            <!-- <router-link :to="{path:`${pdf}`, query:{url:item.pdfUrl}}">
+              {{item.title}} </router-link> -->
+            <router-view></router-view>
+          </Tab-pane>
+        </Tabs>
+       
+      </div>
+    </div>
+     <div class="live-content-right">
+       <!-- <div class="teacher-view-detail scroll-style" v-show="selectLook==0">
+         <chat :messageList="messageList" @moreList="getMessageList" @sendMessage="sendMessage" :isLive="false">
+         </chat>
+       </div> -->
+        <div class="live-content-right">
+          <div class="content-right-header">
+            互动聊天
+          </div>
+          <Chat :messageList="messageList" @moreList="getMessageList" @sendMessage="sendMessage"></Chat>
+        </div>
+     </div>
+  </div>
+</div>

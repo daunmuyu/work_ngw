@@ -1,0 +1,25 @@
+.switch-wrap{
+  line-height: 90px;
+  button{
+    margin-top: 30px;
+    margin-right: 16px;
+    &.stop {
+      position: relative;
+      top: -2px;
+    }
+  }
+  .room-name{
+    margin: 0 16px;
+  }
+  .live-status{
+    .video-live{
+      position: relative;
+      display: inline-block;
+      top: 5px;
+      background: url('../../../img/live.png') no-repeat;
+      background-size: 100%;
+      width: 35px;
+      height: 18px;
+    }
+  }
+}

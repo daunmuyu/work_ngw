@@ -1,0 +1,30 @@
+{
+  "name": "ng-bridge",
+  "version": "2.0.0",
+  "description": "牛股王app-前端交互 bridge项目",
+  "main": "old/bridge.js",
+  "scripts": {
+    "start": "node build/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "牛股王",
+    "bridge"
+  ],
+  "author": "chendapeng@niuguwang.com",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "html-webpack-plugin": "^2.30.1",
+    "open-browser-webpack-plugin": "^0.0.5",
+    "raw-loader": "^0.5.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
+  }
+}
+ 

@@ -1,0 +1,72 @@
+// 颜色
+$bg-99A8B4: #99A8B4;
+$bg-8997A5: #8997A5;
+$bg-6A7681: #6A7681;
+$bg-52668C: #52668C;
+$bg-404953: #404953;
+$bg-363E47: #363E47;
+$bg-303841: #303841;
+$bg-2A4159: #2A4159;
+$bg-E3E7E7: #E3E7E7;
+$bg-E4EBEB: #E4EBEB;
+$bg-F2F7F7: #F2F7F7;
+$bg-FFFFFF: #FFFFFF;
+$bg-3D70F6: #3D70F6;
+// $bg-3D70F6: #3598db;
+$bg-3598db: #3598db;
+$bg-55D48B: #55D48B;
+$bg-F36060: #F36060;
+
+
+@mixin flexBox { // 两端居中
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flexBetween { // 两端
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flexAic { // 垂直居中
+  display: flex;
+  align-items: center;
+}
+
+@mixin lineOne {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin bgRSP {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin photoImg($value: 44px) {
+  display: block;
+  width: $value;
+  height:  $value;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+@mixin position($value: absolute, $lf: 0, $tp: 0) {
+  position: $value;
+  left: $lf;
+  top: $tp;
+}
+
+// 禁止选中文本
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
+}
+

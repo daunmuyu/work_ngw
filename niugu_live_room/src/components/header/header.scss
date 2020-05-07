@@ -1,0 +1,22 @@
+.top-header-wrap {
+  line-height: 46px;
+  padding: 0 20px;
+  .user-info{
+    margin-left: 32px;
+    .name{
+      margin: 0 16px;
+    }
+    .avatar{
+      width: 32px;
+      height: 32px;
+      // margin-right: 16px;
+      border-radius: 16px;
+      position: relative;
+      // top: 10px;
+    }
+  }
+
+  .ant-menu-horizontal {
+    border-bottom: none;
+  }
+}

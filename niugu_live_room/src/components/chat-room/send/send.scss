@@ -1,0 +1,26 @@
+.send-wrap {
+  .header-bar {
+    background-color: #f4f4f4;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+
+    .reply {
+      margin-right: 32px;
+      .name {
+        color: #333;
+        font-weight: bold;
+      }
+
+      .del-reply {
+        // margin-left: 10px;
+        background: inherit;
+        border: none;
+      }
+    }
+  }
+
+  .btns {
+    font-size: 18px;
+  }
+}

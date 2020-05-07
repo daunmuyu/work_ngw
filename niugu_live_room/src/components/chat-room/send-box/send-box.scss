@@ -1,0 +1,49 @@
+.send-box-wrap {
+  padding: 20px 10px 10px;
+
+  .fontType {
+    b {
+      color: #40a9ff;
+    }
+  }
+
+  .text-wrap {
+    height: 80px;
+    overflow: scroll;
+    font-size: 14px;
+  }
+
+  .btn-wrap {
+    button {
+      width: 120px;
+    }
+  }
+
+  .ant-radio-group {
+    position: relative;
+    top: -2px;
+    left: 5px;
+  }
+
+  .msg-file {
+    top: 0;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+  }
+
+  .picture {
+    position: relative;
+    font-size: 20px;
+
+    .upload-file-tip {
+      font-size: 12px;
+      display: inline-block;
+      position: relative;
+      top: -3px;
+      margin: 0 16px;
+    }
+  }
+}

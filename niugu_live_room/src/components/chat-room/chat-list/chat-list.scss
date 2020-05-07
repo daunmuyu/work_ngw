@@ -1,0 +1,41 @@
+$chatListHight: 600px;
+
+.chat-list {
+  position: relative;
+  margin-top: 10px;
+  padding: 16px;
+  height: $chatListHight;
+  overflow-y: scroll;
+
+  .load-more {
+    text-align: center;
+    color: #999;
+  }
+
+  .header {
+    height: 28px;
+    line-height: 28px;
+  }
+}
+
+.chat-list-wrap {
+  position: relative;
+  height: $chatListHight;
+
+  .has-new {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #49a9ee;
+    bottom: 5px;
+    text-align: center;
+
+    span {
+      background-color: #fff;
+      border: 1px solid #49a9ee;
+      padding: 2px 10px;
+      border-radius: 15px;
+      height: 30px;
+    }
+  }
+}

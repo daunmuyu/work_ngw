@@ -1,0 +1,230 @@
+
+.n-chart {
+  width: 100%;
+  height: 100%;
+  svg {
+    background: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+  }
+  text {
+    fill: #000;
+  }
+  text.symbol {
+    fill: #BBBBBB;
+  }
+  path {
+    fill: none;
+    stroke-width: 0.5;
+  }
+  .tick line {
+    stroke: #eee;
+    stroke-width: 0.5;
+  }
+  path.candle {
+    stroke: #f00;
+  }
+  path.candle.body {
+    stroke-width: 0;
+  }
+  path.candle.up {
+    fill: #f00;
+    stroke: #f00;
+  }
+  path.candle.down {
+    fill: #0a0;
+    stroke: #0a0;
+  }
+  .close.annotation.up path {
+    fill: #f00;
+  }
+  path.volume {
+    fill: #DDDDDD;
+  }
+  .indicator-plot path.line {
+    fill: none;
+    stroke-width: 0.5;
+  }
+  .ma-0 path.line {
+    stroke: #ffc132;
+  }
+  .ma-1 path.line {
+    stroke: #80d7f5;
+  }
+  .ma-2 path.line {
+    stroke: #fc5fc8;
+  }
+  button {
+    position: absolute;
+    right: 110px;
+    top: 25px;
+  }
+  path.macd {
+    stroke: #0000AA;
+  }
+  path.signal {
+    stroke: #FF9999;
+  }
+  path.zero {
+    stroke: #BBBBBB;
+    stroke-dasharray: 0;
+    stroke-opacity: 0.5;
+  }
+  path.difference {
+    fill: #BBBBBB;
+    opacity: 0.5;
+  }
+  path.rsi {
+    stroke: #000000;
+  }
+  path.overbought,
+  path.oversold {
+    stroke: #FF9999;
+    stroke-dasharray: 5, 5;
+  }
+  path.middle,
+  path.zero {
+    stroke: #BBBBBB;
+    stroke-dasharray: 5, 5;
+  }
+  .analysis circle,
+  .analysis path {
+    stroke: blue;
+    stroke-width: 0.8;
+  }
+  .trendline circle {
+    stroke-width: 0;
+    display: none;
+  }
+  .mouseover .trendline path {
+    stroke-width: 0.5;
+  }
+  .mouseover .trendline circle {
+    stroke-width: 0.5;
+    display: inline;
+  }
+  .dragging .trendline circle,
+  .dragging .trendline path {
+    stroke: darkblue;
+  }
+  .interaction circle,
+  .interaction path {
+    pointer-events: all;
+  }
+  .interaction .body {
+    cursor: move;
+  }
+  .trendlines .interaction .end,
+  .trendlines .interaction .start {
+    cursor: nwse-resize;
+  }
+  .supstance path {
+    stroke-dasharray: 2, 2;
+  }
+  .supstances .interaction path {
+    pointer-events: all;
+    cursor: ns-resize;
+  }
+  .mouseover .supstance path {
+    stroke-width: 0.5;
+  }
+  .dragging .supstance path {
+    stroke: darkblue;
+  }
+  .crosshair {
+    cursor: crosshair;
+  }
+  .crosshair path.wire {
+    stroke: #DDDDDD;
+    stroke-dasharray: 1, 1;
+  }
+  .crosshair .axisannotation path {
+    fill: #DDDDDD;
+  }
+  .tradearrow path.tradearrow {
+    stroke: none;
+  }
+  .tradearrow path.buy {
+    fill: #0000FF;
+  }
+  .tradearrow path.sell {
+    fill: #9900FF;
+  }
+  .tradearrow path.highlight {
+    fill: none;
+    stroke-width: 0.5;
+  }
+  .tradearrow path.highlight.buy {
+    stroke: #0000FF;
+  }
+  .tradearrow path.highlight.sell {
+    stroke: #9900FF;
+  }
+  path.volume.up {
+    fill: #f00;
+  }
+  path.volume.equal {
+    fill: #f00;
+  }
+  path.volume.down {
+    fill: #0a0;
+  }
+  path.share.line {
+    fill: none;
+    stroke: #056cfc;
+  }
+  path.share.area {
+    fill: #dfecfe;
+  }
+  path.share.ma {
+    stroke: #ffc132;
+  }
+  path.kdj.k {
+    stroke: #87d9f5;
+  }
+  path.kdj.d {
+    stroke: #fc64ca;
+  }
+  path.kdj.j {
+    stroke: #ffc33a;
+  }
+  path.rsi.rsi6 {
+    stroke: #87d9f5;
+  }
+  path.rsi.rsi12 {
+    stroke: #fc64ca;
+  }
+  path.rsi.rsi24 {
+    stroke: #ffc33a;
+  }
+  g.axis.left path.domain,
+  g.percent.axis path.domain {
+    stroke: none;
+  }
+  .tab-indicator {
+    margin-bottom: 5px;
+  }
+  .mint-navbar .mint-tab-item.is-selected {
+    border: none;
+    margin: 0;
+    border-top: 1px solid #26a2ff;
+    color: #26a2ff;
+    margin-bottom: -3px;
+  }
+  .mint-navbar .mint-tab-item {
+    padding: 5px 0;
+    font-size: 15px;
+  }
+  g.crosshair path.horizontal,
+  g.crosshair path.vertical,
+  g.crosshair path.ind-horizontal,
+  g.crosshair path.ind-vertical {
+    stroke: #aaa;
+    stroke-dasharray: 5;
+    stroke-opacity: 0.8;
+  }
+  .candle-info rect {
+    fill: #eee;
+    fill-opacity: 0.8;
+  }
+}

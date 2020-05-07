@@ -1,0 +1,193 @@
+.chat-editor {
+  // width: 100%;
+  width: 100%;
+  height: auto;
+  min-height: 42px;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 22;
+  // .chatedittab {
+  //   position: relative;
+  //   width: 100%;
+  //   height: 60px;
+  //   background: #555;
+  //   border-bottom: 1px solid #666;
+  //   .emoji_img {
+  //     position: absolute;
+  //     left: 16px;
+  //     top: 18px;
+  //     display: block;
+  //     width: 25px;
+  //     height: 25px; // background-image: url(../../images/emoji_img.png);
+  //     background-repeat: no-repeat;
+  //     background-size: contain;
+  //     cursor: pointer;
+  //   }
+  //   .pic_img {
+  //     position: absolute;
+  //     left: 73px;
+  //     top: 18px;
+  //     width: 25px;
+  //     height: 25px; // background-image: url(../../images/pic_img.png);
+  //     // background-repeat: no-repeat;
+  //     // background-size: contain;
+  //     cursor: pointer;
+  //   }
+  //   .qp {
+  //     position: absolute;
+  //     left: 128px;
+  //     top: 19px;
+  //     width: 41px;
+  //     height: 23px;
+  //     border-radius: 2px;
+  //     line-height: 23px;
+  //     text-align: center;
+  //     font-size: 12px;
+  //     color: rgb(100, 179, 240);
+  //     border: 1px solid rgb(100, 179, 240);
+  //     cursor: pointer;
+  //   }
+  //   .hidden{
+  //     display: none;
+  //   }
+  // }
+  // .chateditpanel {
+  //   background: #555;
+  //   height: 240px;
+  //   .chateditmsg {
+  //     margin: 0 auto;
+  //     width: 100%;
+  //     font-size: 24px;
+  //     line-height: 30px;
+  //     overflow: hidden;
+  //     overflow-y: auto;
+  //     outline: none;
+  //     height: 160px;
+  //     padding: 0 10px;
+  //     &:empty:before {
+  //       content: attr(placeholder);
+  //       color: #888;
+  //       font-size: 24px;
+  //     }
+  //     &:focus:before {
+  //       content: none;
+  //     }
+  //   }
+  //   .send {
+  //     position: absolute;
+  //     right: 10px;
+  //     bottom: 0px;
+  //     width: 98px;
+  //     height: 45px;
+  //     background-image: url(../../../../images/send.png);
+  //     background-repeat: no-repeat;
+  //     background-size: contain;
+  //     cursor: pointer;
+  //   }
+  // }
+  // .bottom-box {
+  //   width: 100%;
+  //   height: auto;
+  //   min-height: 42px;
+  //   background: #fff;
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   z-index: 22;
+  // }
+
+  [contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block;
+    color: #999;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+  }
+
+  .send-box-wrap {
+    min-height: 42px;
+    background: #fff;
+    padding: 0 10px;
+    border-top: 0.5px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .item {
+      &:nth-child(2) {
+        flex: 1 0 12%;
+      }
+      &:nth-child(3) {
+        flex: 1 0 20%;
+        text-align: center;
+      }
+      &:nth-child(1) {
+        flex: 1 0 68%;
+      }
+      .enter-msg {
+        word-break: break-all;
+        // white-space: nowrap;
+        // overflow: hidden !important;
+        height: auto !important;
+        max-height: 80px;
+        overflow: scroll;
+        line-height: 1em;
+        font-size: 14px;
+        &.hide-tip,
+        &:focus {
+          &:before {
+            display: none;
+          }
+        }
+        img {
+          position: relative;
+          width: 20px;
+        }
+      }
+      .enter-msg,
+      input {
+        font-size: 16px;
+        display: inline-block;
+        width: 89%;
+        border: 0.5px solid #ddd;
+        // padding: 7px 15px;
+        padding-left: 5px;
+        margin: 5px 0;
+        border-radius: 5px;
+        height: 30px;
+        line-height: 30px;
+        &:focus {
+          outline: none;
+        }
+      }
+      &:nth-child(2),
+      &:nth-child(3) {
+        text-align: center;
+        position: relative;
+      }
+      .face {
+        // background: url('../../static/img/icon_face_02.png') no-repeat;
+        width: 32px;
+        height: 32px;
+        background-size: 100% 100%;
+        text-align: center;
+        display: inline-block;
+        align-items: center;
+        position: relative;
+        top: 3px;
+      }
+      button {
+        width: 60px;
+        height: 30px;
+        margin: 0 auto;
+        font-size: 12px;
+        line-height: 30px;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+$main-font: white;
+
+$day-background-color: transparent; // 整体背景颜色
+$night-background-color: #141414;
+
+$day-title-main-color: #3F424E; // 最上面标题主要颜色
+$night-title-main-color: #E5E6EC;
+
+$day-title-right-color: #3F424E; // 靠右的标题颜色
+$night-title-right-color: #818390;
+
+
+$day-font-color: #6E717E; // 主要文字颜色
+$night-font-color: #AEAFB3;
+
+$day-title-color: #495060; // 每个版块标题颜色
+$night-title-color: #E5E6EC;
+
+$day-live-background-color: #f7f7f7; // ，
+$night-live-background-color:#141414;
+
+$day-part-background-color: #fff; // 每个版块的背景颜色
+$night-part-background-color: #1E1E22;
+
+$day-message-border: 1px solid #E2E9F1; // 消息列表颜色
+$night-message-border: none;
+
+$day-message-background: #F8FBFF; // 消息列表背景色
+$night-message-background: #2C2D33;
+
+$day-teacher-img-border: 0 -2px 4px 0 #E2E9F1; // 大咖观点头像border
+$night-teacher-img-border: none;
+
+$day-signal-title-color: #002F00; // 信号列表风险提示内容字体颜色
+$night-signal-title-color: #E5E6EC;
+
+// 信号列表相关颜色
+$day-signal-border: 1px solid #E2E9F1;
+$night-signal-border: none;
+
+$day-signal-header-red-background: #EB1E35; // 信号头部颜色
+$night-signal-header-red-background: #CA172B;
+
+$day-signal-header-green-background: #0CAD41; // 信号头部颜色
+$night-signal-header-green-background: #129C41;
+
+$day-signal-header-black-background: #3F424E;; // 信号头部颜色
+$night-signal-header-black-background: #141414;
+
+$day-signal-main-red-background: #FFFDF9; // 信号主体颜色
+$night-signal-main-red-background: #2C2D33;
+
+$day-signal-main-green-background: #FAFFFA;
+$night-signal-main-green-background: #2C2D33;
+
+$day-signal-main-black-background: #F8FBFF; // 信号头部颜色
+$night-signal-main-black-background: #2C2D33;
+
+$day-signal-main-font-color:  #3F424E; // 信号主体border
+$night-signal-main-font-color: #E5E6EC;
+
+$day-signal-break-border-color: #E2E9F1;
+$night-signal-break-border-color: #141414;
+
+$day-signal-note: #474C63;
+$night-signal-note: #E5E6EC;
+

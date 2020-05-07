@@ -1,0 +1,86 @@
+<div class="live-detail">
+  <Card dis-hover>
+    <p slot="title">
+      编辑直播间
+    </p>
+    <Form ref="live" :model="live" :rules="liveValidate" :label-width="120">
+      <FormItem label="直播间名称" prop="LiveTitle">
+        <Input v-model="live.LiveTitle" placeholder="请输入直播间名称" style="width: 200px"></Input>
+      </FormItem>
+      <FormItem label="直播间简介" prop="LiveDesc">
+        <Input v-model="live.LiveDesc" placeholder="请输入直播间简介" style="width: 200px"></Input>
+      </FormItem>
+      <FormItem label="策略名" prop="strname">
+        <Input v-model="live.strname" placeholder="请输入策略名" style="width: 200px"></Input>
+      </FormItem>
+      <FormItem label="策略简介" prop="desc">
+        <Input v-model="live.desc" placeholder="请输入策略简介" style="width: 200px"></Input>
+      </FormItem>
+      <FormItem label="期货分析师牌照号" prop="strnumber">
+        <Input v-model="live.strnumber" placeholder="请输入期货分析师牌照号" style="width: 200px"></Input>
+      </FormItem>
+      <FormItem label="直播间图片">
+        <div v-show="live.LiveBanner && live.LiveBanner.length > 0" class="img-wrapper">
+          <img :src="live.LiveBanner" class="banner-img">
+          <div class="phone-cover">
+            <Icon type="compose" @click.native="changePhone" size="60"></Icon>
+            <Icon type="ios-trash-outline" @click.native="removePhone" size="60"></Icon>
+          </div>
+        </div>
+        <div v-show="!live.LiveBanner" class="no-img-wrapper">
+          <input type="file" name="phone" ref="phone" id="phone" class="inputfile" @change="uploadImg" />
+          <label for="phone">
+            <Icon type="camera" size="60"></Icon>
+          </label>
+        </div>
+      </FormItem>
+      <FormItem label="策略图片">
+        <div v-show="live.strategyImg && live.strategyImg.length > 0" class="img-wrapper">
+          <img :src="live.strategyImg" class="banner-img" alt="图片加载失败" />
+          <div class="phone-cover">
+            <Icon type="compose" @click.native="changeStrategyImg" size="60"></Icon>
+            <Icon type="ios-trash-outline" @click.native="removeStrategyImg" size="60"></Icon>
+          </div>
+        </div>
+        <div v-show="!live.strategyImg" class="no-img-wrapper">
+          <input type="file" name="strategyImg" ref="strategyImg" id="strategyImg" class="inputfile" @change="uploadStrategyImg" />
+          <label for="strategyImg">
+            <Icon type="camera" size="60"></Icon>
+          </label>
+        </div>
+      </FormItem>
+      <FormItem label="战队口号" prop="slogan">
+        <Input v-model="live.slogan" placeholder="请输入战队口号" style="width: 200px"></Input>
+      </FormItem>
+      <FormItem label="战队二维码">
+        <div v-show="live.qrcode && live.qrcode.length > 0" class="img-wrapper">
+          <img :src="live.qrcode" class="banner-img" alt="图片加载失败" />
+          <div class="phone-cover">
+            <Icon type="compose" @click.native="changeQrcode" size="60"></Icon>
+            <Icon type="ios-trash-outline" @click.native="removeQrcode" size="60"></Icon>
+          </div>
+        </div>
+        <div v-show="!live.qrcode" class="no-img-wrapper">
+          <input type="file" name="qrcode" ref="qrcode" id="qrcode" class="inputfile" @change="uploadQrcode" />
+          <label for="qrcode">
+            <Icon type="camera" size="60"></Icon>
+          </label>
+        </div>
+      </FormItem>
+      <FormItem label="老师">
+        <CheckboxGroup v-model="live.teacherIds" style="width: 200px; float: left">
+          <Checkbox v-for="teacher in live.teacherList" :label="teacher.Id" :key="teacher.Id" style="display:block">{{teacher.nickname}}</Checkbox>
+        </CheckboxGroup>
+      </FormItem>
+      <FormItem label="助理">
+        <CheckboxGroup v-model="live.assistantIds" style="width: 200px; float: left">
+          <Checkbox v-for="assistant in live.assistantList" :label="assistant.Id" :key="assistant.Id" style="display:block">{{assistant.nickname}}</Checkbox>
+        </CheckboxGroup>
+      </FormItem>
+      <FormItem>
+        <Button @click="$router.push('/live')">返回</Button>
+        <Button type="primary" class="ml-20" @click="saveLiveHandler">保存</Button>
+      </FormItem>
+    </Form>
+  </Card>
+</div>

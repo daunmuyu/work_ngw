@@ -1,0 +1,37 @@
+<div class="chat-editor">
+  <emoji-panel v-show="showEmoji" @emojiSelected="emojiSelected"></emoji-panel>
+  <div class="send-box-wrap">
+    <div class="item">
+      <div class="enter-msg" contenteditable id="txtMsg" v-html="curMsg" ref="msgEditor" placeholder="来跟大神聊聊天"></div>
+    </div>
+    <div class="item">
+      <!-- <span class="icon face" @click="handleFaceClick"></span> -->
+      <img class="face" src="../../../../images/emoji_img.png" @click="showEmojiPanel" alt="" id="emoji_btn">
+    </div>
+    <div class="item">
+      <mt-button @click.stop="sendMsg" type="primary">发送</mt-button>
+    </div>
+  </div>
+  <!-- <div class="face-box-wrap" v-show="EmojiShow">
+          <face-pannel></face-pannel>
+        </div> -->
+  <!-- <div class="chatedittab">
+    <emoji-panel v-show="showEmoji" @emojiSelected="emojiSelected"></emoji-panel>
+    <img class="emoji_img" src="../../../../images/emoji_img.png" @click="showEmojiPanel" alt="" id="emoji_btn">
+    <form enctype="multipart/form-data" method="post" id="form1" style="display: none;">
+			<input type="file" class='hidden' ref="uploadimgref"  name="Content" id="Content"  @change="upimgclick" >
+		</form>
+    <label for="Content">
+      <img class="pic_img" src="../../../../images/pic_img.png" alt="" >
+    </label>
+		<div class="qp" @click="clearScreen">
+			清屏
+		</div>
+  </div>
+  <div class="chateditpanel">
+    <div v-html="curMsg" ref="msgEditor" class="chateditmsg" @keydown.enter.stop.prevent="sendMsg" contenteditable="true" placeholder="来跟大神聊聊天"></div>
+    <div class="msgsend">
+      <div class="send" @click.stop="sendMsg"></div>
+    </div>
+  </div> -->
+</div>

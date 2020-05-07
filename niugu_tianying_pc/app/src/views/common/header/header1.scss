@@ -1,0 +1,87 @@
+@media only screen and (max-width: 640px) {
+  .ty-header {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+#header {
+  width: 100%;
+  min-height: 70px;
+  position: absolute;
+  z-index: 233;
+
+  .ty-header {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    max-width: 1200px;
+    color: #fff;
+
+    .am-topbar-brand {
+      height: 100%;
+
+      a {
+        display: block;
+        width: 220px;
+        height: 50px;
+        text-indent: -9999px;
+        background: url('../../../img/logo1.png') left center no-repeat;
+        background-size: contain;
+      }
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+
+      &:active,
+      &:focus,
+      &:hover,
+      &:visited {
+        border: none;
+      }
+    }
+
+    nav {
+      text-align: center;
+
+      a {
+        color: #fff;
+
+        &:focus,
+        &:hover {
+          color: #fff;
+          background-color: transparent;
+        }
+
+        &:after {
+          position: absolute;
+          left: 50%;
+          margin-left: 0;
+          bottom: 8px;
+          content: "";
+          opacity: 0;
+          -webkit-transition: opacity 0.1s;
+          transition: opacity 0.1s;
+          border: 0;
+          width: 32px;
+          height: 2px;
+          background-color: #fff;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+        }
+
+        &:hover:after {
+          opacity: 1;
+        }
+      }
+    }
+
+    a.active {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}

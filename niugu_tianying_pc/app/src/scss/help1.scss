@@ -1,0 +1,99 @@
+@import "./common1.scss";
+
+.container {
+  .top {
+    background-image: url('../img/help/help.png');
+  }
+}
+
+.content {
+  .layer.fast {
+    background-size: cover;
+    // background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/trade/trade_1.png");
+    padding-bottom: 40px;
+  }
+
+  .items {
+    max-width: 800px;
+    overflow: auto;
+    zoom: 1;
+    margin: 20px auto;
+  }
+
+  .dls {
+    cursor: pointer;
+  }
+
+  .itemsTxt {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px 40px;
+
+    ul {
+      border-top: 1px solid rgb(232, 232, 232);
+
+      li {
+        line-height: 45px;
+        height: 45px;
+        border-bottom: 1px solid rgb(232, 232, 232);
+        width: 100%;
+        font-size: 14px;
+        font-weight: 600;
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 9px 15px;
+        background-image: url("../img/help/jian@2x.png");
+        cursor: pointer;
+
+        a {
+          width: 100%;
+          display: inline-block;
+          background-repeat: no-repeat;
+          background-position: left center;
+          background-size: 15px 15px;
+          background-image: url("../img/help/2@2x.png");
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+  // .helpBox {
+  //   max-width: 960px;
+  //   padding: 0 15px 40px;
+  //   margin: 0 auto;
+  //   border-bottom: 1px solid #e5e5e5;
+  //
+  //   .tips_2 {
+  //     color: rgb(84, 98, 254);
+  //     margin-bottom: 15px;
+  //   }
+  //
+  //   h5 {
+  //     font-size: 18px;
+  //     font-weight: 600;
+  //     line-height: 20px;
+  //     margin: 15px 0;
+  //     border-left: 2px solid rgb(86, 78, 254);
+  //     padding-left: 5px;
+  //   }
+  //
+  //   p {
+  //     font-size: 14px;
+  //     line-height: 24px;
+  //     padding-bottom: 15px;
+  //   }
+  //
+  //   .pics_2 {
+  //     padding-bottom: 15px;
+  //
+  //     img {
+  //       max-width: 100%;
+  //     }
+  //   }
+  // }
+}
+[class*=am-u-]+[class*=am-u-]:last-child {
+   float: left;
+}

@@ -1,0 +1,14 @@
+<div class="video-page">
+  <Card dis-hover>
+    <p slot="title">视频管理</p>
+    <div class="mb-20">
+      <span>直播间：</span>
+      <Select v-model="roomid" style="width:200px" @on-change="liveChanged">
+        <Option v-for="live in liveList" :value="live.roomId" :key="live.roomId">{{ live.Title }}</Option>
+      </Select>
+      <Button style="margin-left: 20px" type="primary" @click="addVideo">添加视频</Button>
+    </div>
+    <Table border :columns="videoColumns" :data="videoList" />
+    <Page :show-total ="true" :current="current" class="page" :total="totalPage" @on-change="pageChanged" show-elevator></Page>
+  </Card>
+</div>

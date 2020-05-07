@@ -1,0 +1,40 @@
+.room-list {
+    width: 60%;
+    margin: 0 auto;
+    .item {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      padding: 0 14px;
+      &.switch1 {
+        &:after {
+          display: inline-block;
+        }
+      }
+
+      &:after {
+        position: relative;
+        content: '(直播中)';
+        color: red;
+        font-size: 10px;
+        display: none;
+      }
+
+      &.video1 {
+        &:after {
+          content: ' ';
+          display: inline-block;
+          background: url('../../img/live.png') no-repeat;
+          background-size: 100%;
+          width: 25px;
+          height: 12px;
+          margin-left: 5px;
+        }
+      }
+
+      &.active,
+      &:hover {
+        color: #108ee9;
+      }
+    }
+  }

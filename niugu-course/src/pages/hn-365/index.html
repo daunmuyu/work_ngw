@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <!-- 分享meta设置 -->
+  <meta itemprop="name" content="好股365" />
+  <meta itemprop="image" content="https://h5.stockhn.com/img/hntg/96.png" />
+  <meta name="description" itemprop="description" content="每天一块钱 投资更轻松" />
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+  <script type="text/javascript" src="https://open.mobile.qq.com/sdk/qqapi.js"></script>
+  <!-- 分享meta设置 -->
+  <title>好股365</title>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <div class="widImg">
+      <img src="./images/image1@2x.png" alt="">
+      <img src="./images/image2@2x.png" alt="">
+      <img src="./images/image3@2x.png" alt="">
+      <div class="agrment">
+        <p>*风险提示：股市有风险，入市需谨慎。<br>
+          本产品所有提示及业绩展现均不构成买卖建议。点立即购买按钮代表同意《海能投顾产品服务协议》并已阅知《风险揭示书》。VIP课程由上海海能证券投资顾问有限公司（业务资格许可证号：zx0098）提供。</p>
+      </div>
+    </div>
+    <div class="footer">
+      <template v-if="isbuy">
+        <div class="left">
+          <h5>海能淘股独家资讯</h5>
+          <p>看独家资讯领金股</p>
+        </div>
+        <div class="right"><button @click="goInformation">去看看</button></div>
+      </template>
+      <template v-else>
+        <div class="left">
+          <h5>新老用户回馈季</h5>
+          <p>每天只要1块钱 立享4大专项服务</p>
+        </div>
+        <div class="right"><button @click="goToPay">立即购买</button></div>
+      </template>
+    </div>
+
+  </div>
+</body>
+
+</html>

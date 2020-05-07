@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <!-- 分享meta设置 -->
+  <meta itemprop="name" content="好股365" />
+  <meta itemprop="image" content="https://h5.stockhn.com/img/hntg/96.png" />
+  <meta name="description" itemprop="description" content="每天一块钱 投资更轻松" />
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+  <script type="text/javascript" src="https://open.mobile.qq.com/sdk/qqapi.js"></script>
+  <!-- 分享meta设置 -->
+  <title>好股365</title>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <div class="resultPane">
+      <div class="resultIcon">
+        <img src="./images/pay/succeed_icon@2x.png" alt="">
+      </div>
+      <div class="textCont">
+        <h5>支付成功</h5>
+        <p>请前往海能淘股App体验“好股365”的更多服务</p>
+      </div>
+      <div class="downBtn">
+        <div class="topbtn"><button @click="download(1)">打开海能淘股</button></div>
+        <div class="bombtn"><button @click="download(2)">下载海能淘股</button></div>
+      </div>
+    </div>
+    <div class="popup" v-if="isMark" @click="isMark = false">
+      <div class="popup_img"></div>
+    </div>
+  </div>
+</body>
+
+</html>

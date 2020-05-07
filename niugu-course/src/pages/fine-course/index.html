@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <!-- 分享meta设置 -->
+  <meta itemprop="name" content="高级定制"/>
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <!-- 分享meta设置 -->
+  <title>高级定制</title>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="container" ref="scrollView">
+      <div class="imgPane">
+        <img class="widImg" src="./images/img1.png" alt="">
+      </div>
+      
+      <div class="content">
+        <div class="freeCont">
+            <div class="head">行情拐点,孤军作战怎能行？</div>
+            <div class="title">现在加入 可免费领《抢占黄金点》精品课程</div>
+            <div class="input-phone">
+              <van-cell-group class="input-pane border-ios">
+                <img class="icon icon-phone" src="./images/mobile.png" alt="">
+                <input class="input" type="tel" maxlength="11" v-model="phoneNum" placeholder="请输入手机号">
+                <img class="iconTrue" v-if="phoneNum.length == 11" src="./images/true@2x.png" alt="">
+              </van-cell-group>
+              <span v-if="phoneNum.length > 0 && phoneNum.length !== 11" class="rule-tip">请输入正确格式的手机号</span>
+              <van-cell-group class="input-pane border-ios input-top">
+                  <img class="icon icon-lock" src="./images/lock.png" alt="">
+                  <input class="input" type="tel" maxlength="11" v-model="verifyCode" placeholder="请输入验证码">
+                  <img class="iconTrue" v-if="verifyCode.length == 4" src="./images/true@2x.png" alt="">
+                  <button class="codeBtn" @click="getVerifyCode" :disabled="timeNum != 60">{{timeNum == 60 ? '获取验证码' : timeNum + 's后重发'}}</button>
+                </van-cell-group>
+            </div>
+            <div class="btn-pane">
+              <button @click='submitFree' class="addBtn">立即加入</button>
+            </div>
+            <span class="tip">为后续更好提供服务，系统将自动为你注册牛股王app</span>
+          </div>
+      </div>
+
+      <!-- 二维码弹窗 -->
+      <van-popup :close-on-click-overlay='false' class="van-pop" v-model="show">
+        <img class="img-pane" src="./images/share.png" alt="">
+        <img class="close" @click='closePop' src="./images/close.png" alt="">
+      </van-popup>
+
+    </div>
+  </div>
+</body>
+</html>

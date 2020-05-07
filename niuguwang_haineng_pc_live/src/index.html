@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta content="telephone=no" name="format-detection" />
+  <title>海能聊天直播间</title>
+  <script>
+    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+      window.location.href = 'https://live.stockhn.com/public/live/index.html?isH5=1&cid=3926';
+    }
+    // function getUrlParam(name) {
+    //   var reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`);
+    //   var r = window.location.search.substr(1).match(reg);
+    //   if (r != null) return unescape(r[2]);
+    //   return null;
+    // }
+    // var cid = getUrlParam('cid');
+    // var sid = getUrlParam('sid');
+    // if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+    //   window.location.href = 'https://h5.stockhn.com/public/live/index.html?isH5=1' + (cid ? '&cid=' + cid : '') + (sid ? '&sid=' + sid : '');
+    // }
+  </script>
+  <link href="./static/video-js.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <App :times="times" :user-status="userStatus" @close="userClose"/>
+  </div>
+  <script type="text/javascript" src="./static/video.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/videojs-flash.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/videojs-contrib-hls.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/videojs-playlist.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/NIM_Web_Chatroom_v3.8.0.js" charset="utf-8"></script>
+</body>
+
+</html>

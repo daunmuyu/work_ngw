@@ -1,0 +1,35 @@
+.user-item {
+  position: relative;
+  padding: 0 15px;
+  margin: 5px 0;
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+  }
+
+  .name {
+    position: relative;
+    margin-left: 10px;
+    top: -5px;
+    display: inline-block;
+    width: 175px;
+    height: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .reset{
+    border: none;
+  }
+
+  .forbid-btn-reset {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    display: inline-block;
+    margin-top: -14px;
+    color: #dedede;
+  }
+}

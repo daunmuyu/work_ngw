@@ -1,0 +1,15 @@
+{
+  "random":true,
+  "script":[
+  ],
+  "style":[
+
+  ],
+  "vendor": [
+    "jquery",
+    "juicer",
+    "underscore",
+    "backbone",
+    "amazeui"
+  ]
+}

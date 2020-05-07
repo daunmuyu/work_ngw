@@ -1,0 +1,22 @@
+<div class="video-container">
+  <!-- <div class="timer" v-show="timeType == 1">
+    有效时间：{{showTime}}
+  </div> -->
+  <div class="video-wrap" v-show="!showSwitch">
+    <video
+      autoplay
+      class="live-video video-js vjs-big-play-centered"
+      id="videoPlayer"
+      x5-playsinline
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      autoplay
+      controls
+      :poster="poster"
+    ></video>
+  </div>
+  <div class="video-mask" v-show="showSwitch">
+    <img :src="poster" />
+  </div>
+</div>

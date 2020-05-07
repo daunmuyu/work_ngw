@@ -1,0 +1,32 @@
+.result-conter {
+  width: 100%;
+  min-height: 800px;
+  .result-head {
+    background: #0d212c;
+    height: 98px;
+    width: 100%;
+  }
+
+  .result-box {
+    text-align: center;
+    padding: 250px 0;
+    line-height: 58px;
+    i {
+      font-size: 48px;
+      &.el-icon-error {
+        color: #ff5a62;
+      }
+      &.el-icon-success {
+        color: #00d19d;
+      }
+      padding-right: 15px;
+    }
+    span {
+      font-size: 24px;
+      font-weight: 600;
+      position: relative;
+      top: -10px;
+    }
+  }
+}
+

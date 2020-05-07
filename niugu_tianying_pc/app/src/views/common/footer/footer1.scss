@@ -1,0 +1,51 @@
+#footer {
+  background: rgba(51, 51, 51, 1);
+  color: #fff;
+  min-height: 220px;
+
+  .concat {
+    height: 175px;
+    width: 100%;
+    max-width: 960px;
+    text-align: center;
+
+    .location,
+    .phone {
+      height: 80px;
+      overflow: hidden;
+      margin: 45px auto;
+
+      img {
+        height: 66px;
+        vertical-align: middle;
+      }
+
+      p {
+        text-align: left;
+        font-size: 18px;
+
+        &:first-of-type {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .location,
+  .phone {
+    transform: scale(0.7);
+    margin: 5px auto !important;
+
+    p {
+      margin: 0 10px;
+    }
+  }
+}

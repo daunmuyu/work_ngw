@@ -1,0 +1,38 @@
+.room-setting {
+
+  max-width: 640px;
+
+  .ant-tabs-bar {
+    border-bottom: none;
+  }
+
+  .ant-tabs-tabpane {
+    padding-left: 16px;
+
+    button {
+      margin-left: 16px;
+    }
+  }
+
+  .notice {
+    max-width: 320px;
+    display: inline-block;
+    height: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 30px;
+  }
+  .mg-10 {
+    margin: 10px 0;
+  }
+  .pd-16 {
+    display: inline-block;
+    padding: 0 16px;
+  }
+  .advanceImg {
+    height: 24px;
+    width: auto;
+    vertical-align: bottom;
+  }
+}

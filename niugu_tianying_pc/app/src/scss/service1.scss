@@ -1,0 +1,118 @@
+@import "./common1.scss";
+
+.container {
+  .top {
+    background-image: url('../img/service/servicea.png');
+  }
+}
+@media only screen and (min-width: 640px) {
+  .times {
+    margin: 20px 60px;
+  }
+}
+
+.content {
+  width: 100%;
+
+  .layer {
+    width: 100%;
+
+    &.choice {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url("../img/trade/trade_1.png");
+
+      .items {
+        .pics {
+          img {
+            max-height: 163px;
+            left: -10px;
+          }
+        }
+      }
+    }
+
+    .title {
+      max-width: 700px;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 auto;
+      font-weight: 500;
+      padding: 20px 15px;
+    }
+
+    .items {
+      height: 100%;
+      max-width: 800px;
+      padding-bottom: 40px;
+      margin: 0 auto;
+      overflow: auto;
+      zoom: 1;
+
+      .dls {
+        width: 33.33%;
+        text-align: center;
+
+        img {
+          max-width: 80%;
+        }
+      }
+
+      .pics {
+        // text-align: right;
+        overflow: hidden;
+        // position: relative;
+        img {
+          // max-width: 100%;
+          margin: 0 auto;
+          display: block;
+          max-height: 210px;
+          // position: relative;
+          // right: 0;
+        }
+      }
+
+      .txt {
+        ul {
+          // padding-top: 40px;
+          padding: 40px 15px 0;
+
+          li {
+            font-size: 12px;
+            overflow: auto;
+            zoom: 1;
+
+            span {
+              float: left;
+              // width: 100% - 20px;
+              width: 90%;
+              &.icon_title {
+                margin-right: 2px;
+                width: 25px;
+                height: 25px;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-image: url("../img/trade/icon_b1.png");           
+              }
+            }
+
+            // &:before {
+            //   content: "√";
+            //   position: relative;
+            //   top: 2px;
+            //   float: left;
+            //   border-radius: 50%;
+            //   border: 1px solid rgb(86, 78, 254);
+            //   width: 13px;
+            //   height: 13px;
+            //   text-align: center;
+            //   line-height: 12px;
+            //   margin-right: 5px;
+            // }
+          }
+        }
+      }
+    }
+  }
+}

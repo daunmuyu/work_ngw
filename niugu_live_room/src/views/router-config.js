@@ -1,0 +1,65 @@
+/**
+ * 路由配置
+ */
+module.exports = [{
+  key: 'home',
+  name: '首页',
+  route: 'home',
+  component: './home/index.jsx',
+  subRoute: [{
+    key: 'chat-room',
+    name: '聊天室',
+    route: 'chat-room',
+    component: './chat-room/chat-room.jsx',
+  }, {
+    key: 'role',
+    name: '角色控制',
+    route: 'role',
+    component: './role/role.jsx',
+  }, {
+    key: 'tactics',
+    name: '策略设置',
+    route: 'tactics',
+    component: './tactics/tactics.jsx',
+  }, {
+    key: 'strategy',
+    name: '策略设置',
+    route: 'strategy',
+    component: './strategy/strategy.jsx',
+  }, {
+    key: 'exercises',
+    name: '习题册',
+    route: 'exercises',
+    component: './exercises/exercises.jsx',
+  }, {
+    key: 'intraday',
+    name: '盘中播报',
+    route: 'intraday',
+    component: './intraday/intraday.jsx',
+  }, {
+    key: 'welcome',
+    name: '欢迎语设置',
+    route: 'welcome',
+    component: './welcome/welcome.jsx',
+  }, {
+    key: 'user-manage',
+    name: '用户管理',
+    route: 'user-manage',
+    component: './user-manage/user-manage.jsx'
+  }, {
+    key: 'stock-pool',
+    name: '量化股票池',
+    route: 'stock-pool',
+    component: './stock-pool/index.jsx'
+  }, {
+    key: 'product-list',
+    name: '产品列表',
+    route: 'product-list',
+    component: './product-list/product-list.jsx',
+  }],
+}, {
+  key: 'login',
+  name: '登陆',
+  route: 'login',
+  component: './login/login.jsx',
+}];

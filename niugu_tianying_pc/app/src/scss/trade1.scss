@@ -1,0 +1,130 @@
+@import "./common1.scss";
+
+.container {
+  .top {
+    background-image: url('../img/trade/trade1.png');
+    background-repeat: no-repeat;
+  }
+
+  .investment {
+    width: 100%;
+    // padding-top: 15px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/trade/trade_1.png");
+
+    .title {
+      padding: 40px 15px 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .pics {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 15px;
+      height: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .items {
+    width: 100%;
+    padding: 50px 0;
+
+    .pics {
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 108px;
+      }
+    }
+
+    .txt {
+      padding-left: 40px;
+
+      .txtBox {
+        padding: 15px;
+
+        ul {
+          padding-top: 40px;
+
+          li {
+            font-size: 12px;
+            overflow: auto;
+            zoom: 1;
+
+            span {
+              float: left;
+              // width: 100% - 20px;
+              width: 90%;
+              &.icon_title {
+                margin-right: 2px;
+                width: 25px;
+                height: 25px;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-image: url("../img/trade/icon_b1.png");           
+              }
+            }
+
+            // &:before {
+            //   // content: "√";
+            //   position: relative;
+            //   top: 2px;
+            //   float: left;
+            //   border-radius: 50%;
+            //   border: 1px solid rgb(86, 78, 254);
+            //   width: 13px;
+            //   height: 13px;
+            //   text-align: center;
+            //   line-height: 12px;
+            //   margin-right: 5px;
+            // }
+          }
+        }
+
+        .title {
+          font-size: 22px;
+          font-weight: 500;
+          line-height: 28px;
+          position: relative;
+
+          &:after {
+            content: "";
+            position: absolute;
+            width: 46px;
+            height: 3px;
+            bottom: -15px;
+            left: 0;
+            // transform: translateX(-50%);
+            background-color: #f9742b;
+          }
+        }
+      }
+    }
+
+    &.items_2 {
+      background-color: rgb(248, 248, 248);
+      // padding: 20px 0;
+      .pics {
+        img {
+          width: 185px;
+        }
+      }
+    }
+
+    & > div {
+      overflow: auto;
+      zoom: 1;
+      // min-height: 360px;
+      margin: 0 auto;
+      max-width: 900px;
+    }
+  }
+}

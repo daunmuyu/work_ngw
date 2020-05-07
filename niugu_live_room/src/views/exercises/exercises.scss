@@ -1,0 +1,22 @@
+.role-view{
+  padding: 16px;
+  .input-wrap {
+    margin: 10px auto;
+  }
+  .code {
+    width: 100px;
+    vertical-align: top;
+    margin-right: 10px;
+  }
+  .text{
+    min-width: 520px !important;
+    height: 32px !important;
+    width: calc(100% - 200px) !important;
+    vertical-align: text-bottom;
+    padding: 5px;
+  }
+  .btn-add {
+    margin-left: 10px;
+    vertical-align: text-bottom;
+  }
+}

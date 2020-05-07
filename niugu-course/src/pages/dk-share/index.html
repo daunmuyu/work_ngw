@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <!-- 分享meta设置 -->
+  <meta itemprop="name" content="DK趋势"/>
+  <meta itemprop="image" content="./images/banner@2x.png" />
+  <meta name="description" itemprop="description" content="智能掘取好股 尊享机会仅此1次" />
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <!-- 分享meta设置 -->
+  <title>DK趋势</title>
+  <script type="text/javascript">
+    // 腾讯统计
+    setTimeout(function() {
+      var _mtac = {};
+      (function() {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500596132");
+
+        var s = document.getElementsByTagName("script")[1];
+        s.parentNode.insertBefore(mta, s);
+      })();
+    }, 2000);
+  </script>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <section class="container" @scroll="scrollView" ref="scrollView">
+      <div class="clienView" ref="clienView">
+        <div class="navImg" ref="navView">
+          <img class="widImg" src="./images/banner2@2x.png" alt="">
+        </div>
+        <div class="content" v-if="!read" v-lazy:background-image="bgImg">
+          <div class="fromCont">
+            <template>
+              <p class="info-title">请准确填写以下信息，以便尽快帮您开通DK趋势试用服务！</p>
+              <template>
+              <van-cell-group class="input-pane border-ios phone-pane border-ios-color">
+                <img class="icon icon-mobile" src="./images/device-mobile.png" alt="">
+                <input class="input" type="tel" maxlength="11" v-model="phoneNum" placeholder="请输入手机号">
+                <img class="iconTrue" v-if="phoneNum.length == 11" src="./images/true@2x.png" alt="">
+              </van-cell-group>
+              <van-cell-group class="input-pane border-ios phone-pane border-ios-color">
+                <img class="icon icon-lock" src="./images/lock.png" alt="">
+                <input class="input" type="tel" maxlength="6" v-model="verifyCode" placeholder="请输入验证码">
+                <img class="iconTrue" v-if="verifyCode.length == 4" src="./images/true@2x.png" alt="">
+                <button class="codeBtn codeBtn-color" @click="getVerifyCode" :disabled="timeNum != 60">{{timeNum == 60 ? '获取验证码' : timeNum + 's后重发'}}</button>
+              </van-cell-group>
+              </template>
+              <div class="input-pane submit">
+                <van-button type="primary" @click="submitFree">立即提交</van-button>
+              </div>
+              <p class="channel-color">如遇问题请拨打电话 021-2509-9066 </p>
+              <p class="channel-tip">*郑重承诺绝不泄露您的个人信息!</p>
+            </template>
+          </div>
+  
+        </div>
+      </div>
+
+      <div class="imgPane">
+        <lazy-component>
+          <img class="widImg" v-for="imgurl in imgList" v-lazy="imgurl" alt="">
+        </lazy-component>
+        <div class="usebtn">
+          <button class="btntext" @click='getFreeTrial'>免费试用</button>
+        </div>
+      </div>
+     
+    </section>
+
+    <van-popup v-model="isFree">
+      <div class="freeCont">
+        <p class="free-title">请准确填写以下信息，以便尽快帮您开通DK趋势试用服务！</p>
+        <template>
+        <van-cell-group class="input-pane border-ios phone-pane border-ios-color">
+          <img class="icon icon-mobile" src="./images/device-mobile.png" alt="">
+          <input class="input" type="tel" maxlength="11" v-model="phoneNum" placeholder="请输入手机号">
+          <img class="iconTrue" v-if="phoneNum.length == 11" src="./images/true@2x.png" alt="">
+        </van-cell-group>
+        <van-cell-group class="input-pane border-ios phone-pane border-ios-color">
+          <img class="icon icon-lock" src="./images/lock.png" alt="">
+          <input class="input" type="tel" maxlength="6" v-model="verifyCode" placeholder="请输入验证码">
+          <img class="iconTrue" v-if="verifyCode.length == 4" src="./images/true@2x.png" alt="">
+          <button class="codeBtn codeBtn-color" @click="getVerifyCode" :disabled="timeNum != 60">{{timeNum == 60 ? '获取验证码' : timeNum + 's后重发'}}</button>
+        </van-cell-group>
+        </template>
+        <div class="input-pane submit">
+          <van-button type="primary" @click="submitFree">立即提交</van-button>
+        </div>
+        <p class="channel-color">如遇问题请拨打电话 021-2509-9066 </p>
+        <p class="channel-tip">*郑重承诺绝不泄露您的个人信息!</p>
+      </div>
+    </van-popup>
+
+    <van-popup :close-on-click-overlay="false" v-model="isReceived">
+      <div class="received" v-if="isShare">
+        <img class="received-icon" src="./images/received_icon.png" alt="">
+        <p class="received-color">您已领取试用,如有任何疑问可咨询产品客服。</p>
+        <van-button class="received-btn" type="primary" @click="toDownload">确定</van-button>
+        <p class="received-phone">如遇问题请拨打电话 021-2509-9066 </p>
+        <p class="received-tip">*郑重承诺绝不泄露您的个人信息!</p>
+      </div>
+    </van-popup>
+
+    <van-popup :close-on-click-overlay="false" v-model="isOverdue">
+        <div class="received" v-if="isShare">
+          <img class="overdue-icon" src="./images/overdue_icon.png" alt="">
+          <p class="received-color">您试用已过期,如有任何疑问可咨询产品客服。</p>
+          <van-button class="received-btn" type="primary" @click="toDownload">立即下载</van-button>
+          <p class="received-phone">如遇问题请拨打电话 021-2509-9066 </p>
+          <p class="received-tip">*郑重承诺绝不泄露您的个人信息!</p>
+        </div>
+      </van-popup>
+
+    <van-popup :close-on-click-overlay="false" v-model="popupShow">
+      <div class="popupBg" v-if="isShare">
+        <van-button class="download" type="danger" @click="toDownload">确定</van-button>
+      </div>
+    </van-popup>
+
+    <login :login-show="loginShow"></login>
+  </div>
+</body>
+</html>

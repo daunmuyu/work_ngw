@@ -1,0 +1,42 @@
+.ant-table-wrapper {
+  // width: 80%;
+  .ant-pagination {
+    display: none;
+  }
+
+}
+.ant-list-split .ant-list-item {
+  border: none;
+}
+.tempbox {
+  width: 80%;
+  background: #f1f1f1;
+  padding: 30px;
+  button {
+    margin: 0 auto;
+  }
+}
+
+.riskcontent {
+  color: #999999;
+  font-size: 12px;
+}
+.ant-table-content {
+  text-align: center;
+  table {
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    th {
+      text-align: center;
+    }
+  }
+}
+.ant-list-item {
+  padding-top: 0;
+  font-weight: 600;
+}
+.tmps {
+  padding-top: 30px;
+  font-size: 16px;
+}
+

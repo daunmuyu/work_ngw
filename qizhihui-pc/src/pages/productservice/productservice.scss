@@ -1,0 +1,186 @@
+#productservice {
+    .banner {
+        height: 600px;
+        text-align: center;
+        background: url('/static/img/chanpinfuwu_banner.png') no-repeat;
+        .title {
+            font-size: 50px;
+            text-align: center;
+            padding-top: 250px;
+            color: #fff;
+            font-weight: 200;
+        }
+        .des {
+            width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+            font-weight: 200;
+        }
+        .btn {
+            display: inline-block;
+            height: 54px;
+            width: 240px;
+            line-height: 54px;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 60px;
+            color: #fff;
+            background: #ff001e;
+        }
+    }
+    .content {
+        .p-tabs {
+            margin-top: 70px;
+            height: 63px;
+            line-height: 60px;
+            border-bottom: 1px solid #e8e8e8;
+            .item {
+                display: block;
+                float: left;
+                width: 20%;
+                text-align: center;
+                color: #999;
+                font-size: 20px;
+            }
+            .active {
+                color: #ff001e;
+                border-bottom: 3px solid #ff001e;
+            }
+        }
+        .tab-content {
+            display: none;
+            width: 993px;
+            margin: 0 auto;
+            margin-top: 100px;
+            .left {
+                width: 50%;
+                .title {
+                    font-size: 36px;
+                }
+                .des {
+                    width: 514px;
+                    font-size: 20px;
+                    color: #999;
+                    margin-top: 40px;
+                }
+                .btn {
+                    display: block;
+                    width: 220px;
+                    height: 48px;
+                    line-height: 48px;
+                    margin-top: 80px;
+                    text-align: center;
+                    color: #ff001e;
+                    border: 1px solid #ff001e;
+                }
+            }
+            .right {
+                width: 50%;
+                img {
+                    margin-left: 100px;
+                }
+            }
+        }
+        .tab-content-1 {
+            display: block;
+        }
+        .down {
+            text-align: center;
+            .h-title {
+                position: relative;
+                z-index: 2;
+                font-size: 37px;
+                line-height: 37px;
+                text-align: center;
+                padding-top: 120px;
+                .flag {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: -30px;
+                    margin: 0 auto;
+                    width: 80px;
+                    height: 5px;
+                    background: #ff001e;
+                }
+            }
+            .content {
+                margin-top: 120px;
+                .list {
+                    width: 1016px;
+                    margin: 0 auto;
+                    .item {
+                        position: relative;
+                        width: 150px;
+                        margin: 0 52px;
+                        text-align: center;
+                        float: left;
+                        .title {
+                            font-size: 26px;
+                            margin-top: 20px;
+                        }
+                        .des {
+                            font-size: 16px;
+                            margin-top: 15px;
+                            color: #999;
+                        }
+                        .arrow {
+                            position: absolute;
+                        }
+                        .arrow {
+                            position: absolute;
+                            top: 20px;
+                            left: 135px
+                        }
+                    }
+                }
+                .phone {
+                    margin-top: 80px;
+                }
+            }
+        }
+        .pics {
+            width: 930px;
+            margin: 0 auto;
+            padding: 100px 0;
+            overflow-y: hidden;
+            .pic-app {
+                float: left;
+                margin-left: 80px;
+                border: 1px solid #305280;
+                img {
+                    width: 200px;
+                    margin: 25px;
+                }
+                .tip-app {
+                    height: 40px;
+                    line-height: 40px;
+                    background: #305280;
+                    color: #fff;
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+            .pic-h5 {
+                float: right;
+                margin-right: 80px;
+                border: 1px solid #305280;
+                img {
+                    width: 200px;
+                    margin: 25px;
+                }
+                .tip-h5 {
+                    height: 40px;
+                    line-height: 40px;
+                    background: #305280;
+                    color: #fff;
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

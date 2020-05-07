@@ -1,0 +1,30 @@
+<div class="notice-page">
+  <Card dis-hover>
+    <p slot="title">预告管理</p>
+    <Table border :columns="noticeColumns" :data="noticeList"></Table>
+    <div class="edit-bomb" v-show="showEdit">
+      
+      <div class="bomb-container">
+          <Icon @click="showEdit=false" class="close-icon" type="ios-close-circle" size="25"></Icon>
+          <h3>操作</h3>
+          <div class="input-container">
+            <div class="input-item">
+                <div class="input-title">节目名称</div>
+                <div class="input-title">直播时间</div>
+            </div>
+            <p class="no-message" v-if="editInfo.length === 0">暂无预告，请点击下方按钮添加~</p>
+            <div class="input-item" v-for="(item, index) in editInfo">
+              <div class="input-content"><Input placeholder="请输入节目名称" v-model="item.title"/></div>
+              <div class="input-content"><Input placeholder="请输入节目时间段" v-model="item.previewTime"/></div>
+              <Icon @click="handleNoticeInfo('delete', index)" class="delete-icon" size=20 type="ios-trash-outline" />
+            </div>
+          </div>
+          <div class="add-container" @click="handleNoticeInfo('add')"><Icon size="20" type="md-add-circle" /></div>
+          <div class="button-container">
+            <Button @click="showEdit=false">取消</Button>
+            <Button style="margin-left: 10px" @click="handleSetNoticeInfo(editInfo)">提交</Button>
+          </div>
+      </div>
+    </div>
+  </Card>
+</div>

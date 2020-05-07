@@ -1,0 +1,49 @@
+<div class="chat-editor" id="live-home">
+  <div class="editor-live" v-if="isLive">
+     <div class="chatedittab">
+       <emoji-panel v-show="showEmoji" @emojiSelected="emojiSelected"></emoji-panel>
+       <div class="emoji_img" id="emoji_btn" @click="showEmojiPanel">
+         <svg t="1531992931511" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+           p-id="1567" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28">
+           <path
+             d="M504.289882 980.510118a465.980235 465.980235 0 1 0 0-931.960471 465.980235 465.980235 0 1 0 0 931.960471z m0-873.712942a408.214588 408.214588 0 0 1 407.792942 407.792942 408.214588 408.214588 0 0 1-407.792942 407.67247 408.214588 408.214588 0 0 1-407.792941-407.732706 408.214588 408.214588 0 0 1 407.792941-407.792941z m1.505883 700.29553h3.553882c177.874824 0 252.506353-160.466824 255.578353-167.393882a29.093647 29.093647 0 0 0-53.007059-24.094118c-2.529882 5.541647-62.825412 133.300706-202.691765 133.300706H506.578824c-148.660706-1.807059-208.233412-131.734588-208.835765-133.059765a29.093647 29.093647 0 1 0-53.187765 23.732706c3.011765 6.746353 75.776 165.345882 261.300706 167.514353zM359.122824 485.255529a58.127059 58.127059 0 1 0 0-116.254117 58.127059 58.127059 0 0 0 0 116.254117z m291.237647 0a58.127059 58.127059 0 1 0 0-116.254117 58.127059 58.127059 0 0 0 0 116.254117z"
+             :fill="fillColor" p-id="1568"></path>
+         </svg>
+       </div>
+       <form enctype="multipart/form-data" method="post" id="form1" style="display: none;">
+         <input type="file" class='hidden' ref="uploadimgref" name="Content" id="Content" @change="upimgclick">
+       </form>
+     </div>
+     <div class="chateditpanel">
+       <!-- <div class="chateditmsg go-login" v-if="!$root.phone" @click="$root.bombShow = true">
+      <span>登录</span>发言，参与互动
+    </div> -->
+       <div v-html="curMsg" ref="msgEditor" class="chateditmsg" @keydown="newLine" contenteditable="true"
+         :placeholder="placeholder"></div>
+       <div class="msgsend">
+         <div class="send" @click.stop="sendMsg">发送</div>
+       </div>
+     </div>
+  </div>
+  <div class="editor-font" v-show="!isLive">
+    <div class="chatedittab">
+      <emoji-panel v-show="showEmoji" @emojiSelected="emojiSelected"></emoji-panel>
+    </div>
+    <div class="chateditpanel">
+      <div class="emoji_img" id="emoji_btn" @click="showEmojiPanel">
+        <svg t="1531992931511" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          p-id="1567" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28">
+          <path
+            d="M504.289882 980.510118a465.980235 465.980235 0 1 0 0-931.960471 465.980235 465.980235 0 1 0 0 931.960471z m0-873.712942a408.214588 408.214588 0 0 1 407.792942 407.792942 408.214588 408.214588 0 0 1-407.792942 407.67247 408.214588 408.214588 0 0 1-407.792941-407.732706 408.214588 408.214588 0 0 1 407.792941-407.792941z m1.505883 700.29553h3.553882c177.874824 0 252.506353-160.466824 255.578353-167.393882a29.093647 29.093647 0 0 0-53.007059-24.094118c-2.529882 5.541647-62.825412 133.300706-202.691765 133.300706H506.578824c-148.660706-1.807059-208.233412-131.734588-208.835765-133.059765a29.093647 29.093647 0 1 0-53.187765 23.732706c3.011765 6.746353 75.776 165.345882 261.300706 167.514353zM359.122824 485.255529a58.127059 58.127059 0 1 0 0-116.254117 58.127059 58.127059 0 0 0 0 116.254117z m291.237647 0a58.127059 58.127059 0 1 0 0-116.254117 58.127059 58.127059 0 0 0 0 116.254117z"
+            :fill="fillColor" p-id="1568"></path>
+        </svg>
+      </div>
+      <div v-html="curMsg" ref="msgEditor" class="chateditmsg" @keydown="newLine" contenteditable="true"
+        :placeholder="placeholder">
+      </div>
+      <div class="msgsend">
+        <div class="send" @click.stop="sendMsg">发送</div>
+      </div>
+    </div>
+  </div>
+</div>

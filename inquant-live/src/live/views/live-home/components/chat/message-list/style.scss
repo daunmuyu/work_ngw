@@ -1,0 +1,202 @@
+  .night {
+
+    .live-content-right,
+    .teacher-view-detail {
+      .msg-main {
+        background: transparent !important;
+        border: none !important;
+      }
+
+      .message-time {
+        color: #818390 !important;
+      }
+
+      .chatmsg_msg {
+        color: #E5E6EC !important;
+        background: #383941 !important;
+        border: 1px solid #383941 !important;
+      }
+
+      .re-message {
+        color: #AEAFB3 !important;
+      }
+    }
+  }
+
+  .live-content-right,
+  .teacher-view-detail {
+    .message-list-live-home {
+      .no-data {
+        text-align: center;
+      }
+
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      // color: red;
+      .msg-wrapper {
+        padding-top: 10px;
+        padding-left: 13px;
+        padding-right: 15px;
+      }
+
+      .chatmsg {
+        margin-bottom: 5px;
+
+        padding-right: 5px;
+        display: flex;
+        height: 100%;
+        align-items: flex-start;
+
+        .msg-phone {
+          flex: 0 0 50px;
+          width: 50px;
+          text-align: center;
+          padding-top: 10px;
+
+          .head-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+        }
+
+        .msg-content {
+          color: #333;
+          margin-top: 10px;
+
+          .emoji {
+            vertical-align: middle;
+          }
+        }
+
+        .msg-main {
+          flex: 1 1 auto;
+          display: flex;
+          flex-direction: column;
+          background: #FFF;
+          // border-radius: 8px;
+          // border: 1px solid #E2E9F1;
+          // box-shadow: 0 2px 8px 0 #E2E9F1;
+          border-radius: 8px;
+          padding-top: 10px;
+        }
+
+        .chatmsg_infos {
+          display: inline-block;
+          position: relative;
+          // height: 20px;
+          margin-bottom: 7px;
+
+          .name-msg-wrapper {
+            display: flex;
+            align-items: center;
+
+            .avatar {
+              background-image: url(https://img.inquant.cn/userfut/tjteacher/juejinzhe.jpeg);
+              border-radius: 50%;
+              width: 35.4px;
+              height: 35.4px;
+              background-size: cover;
+              background-repeat: no-repeat;
+            }
+          }
+
+
+          .chatmsg_name {
+            display: inline;
+            font-size: 14px;
+            // margin-left: 20px;
+            vertical-align: middle;
+            line-height: 20px;
+            color: #3C7DDA;
+            margin-left: 5px;
+
+            .red-name {
+              font-size: 14px;
+              color: #D95226;
+            }
+
+            .img {
+              width: 63px;
+              height: 23px;
+              position: absolute;
+              top: 0;
+              right: 12px;
+              background-image: url(https://h5.inquant.cn/future/inquant-img/hexinbg.png);
+              background-repeat: no-repeat;
+              background-size: 100% 100%;
+              text-align: center;
+              color: #FFF;
+              font-size: 12px;
+              font-weight: 500;
+            }
+
+            .message-time {
+              display: inline-block;
+              font-size: 12px;
+              color: #707070;
+              margin-left: 10px;
+
+              &.right-time {
+                margin-left: 10px;
+              }
+            }
+          }
+
+          .chatmsg_flag {
+            display: inline-block;
+            vertical-align: middle;
+            height: 20px;
+            margin-left: 8px;
+          }
+
+          .chatmsg_time {
+            display: inline;
+            font-size: 14px;
+            line-height: 20px;
+            color: rgb(153, 153, 153);
+            margin-left: 7.5px;
+          }
+
+        }
+
+        .chatmsg_cont {
+          display: inline-block;
+
+          .chatmsg_msg {
+            max-width: none;
+            // background: #666;
+            color: #000;
+            // font-size: 14px;
+            line-height: 20px;
+            padding: 8px 7.5px;
+            background: #F8FBFF;
+            border: 1px solid #E2E9F1;
+            border-radius: 8px;
+            margin-left: 10px;
+            display: inline-block;
+
+            .re-message {
+              color: #707070;
+            }
+
+            // margin-left: 20px;
+            .emoji {
+              vertical-align: bottom;
+              margin-left: 2px;
+            }
+
+            .hl {
+              height: 1px;
+              border: none;
+              border-top: 1px #707070 dashed;
+              margin: 5px 2px;
+            }
+          }
+        }
+      }
+    }
+  }

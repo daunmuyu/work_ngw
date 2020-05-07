@@ -1,0 +1,55 @@
+<div class="message-list" ref="msgList">
+  <div class="msg-wraper">
+    <!-- <Col class="demo-spin-col" span="8">
+      <Spin fix>
+          <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
+          <div>Loading</div>
+      </Spin>
+    </Col> -->
+    <div class="chatmsg" v-for="(item, index) in list" :key="item.id">
+      <div class="msg-phone">
+        <img class="head-img" :src="item.headimg || defaultImg" alt="">
+      </div>
+      <div class="msg-main">
+        <div class="chatmsg_infos clearfix">
+          <div :class="['chatmsg_name', 'f-l', {'sockpuppet': item.isSockpuppet}]">
+            {{item.name}}
+          </div>
+          <img v-if="getUserIcon(item.roleId).length > 0" :src="  (item.roleId)" alt="" class="chatmsg_flag f-l" />
+          <div class="chatmsg_time f-l">
+            {{timeformat(new Date( parseInt(item.addtime+'000',10)))}}
+          </div>
+          <div class="menu" v-on:mouseenter="actItemId = item.msgId" v-on:mouseleave="actItemId = undefined">
+            <span>操作</span>
+            <ul class="menulist" v-show="item.msgId === actItemId">
+              <li @click.stop="deleteMsg(item)">删除</li>
+              <li @click.stop="reply(item)">回复</li>
+              <li v-if="jinyanList.filter(user => user.id === item.id).length > 0">已禁言</li>
+              <li v-else-if="+item.Id === 9223372036854776000 || +item.roleId!==0"></li>
+              <li v-else @click.stop="jinyan(item)" style="color: rgb(242, 115, 112)">禁言</li>
+            </ul>
+          </div>
+          <div class="shenhe">
+            <span v-if="item.isAudit === 0" @click.stop="check(item, false, index)">审核</span>
+            <span v-else>已审核</span>
+            <span style="color: #f27370; margin-left: 10px" v-show="item.isAudit === 0 && item.flag !== 1" @click="check(item, 1, index)">标记审核</span>
+          </div>
+        </div>    
+        <div class="chatmsg_cont clearfix">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <polygon points="0,5 20,10 15,15 10,20" :class="['arrow', {'sign-svg': item.flag}]"/>
+          </svg>
+          <div v-if="item.ext.mstype === 1" v-html="getMsgContent(item)" :class="['chatmsg_msg', 'f-l', {'sign-font': item.flag}]">
+          </div>
+          <div v-else-if="item.ext.mstype === 3" v-html="getReplyContent(item)" class="chatmsg_msg f-l">
+          </div>
+          <div v-else class="chatmsg_msg f-l">
+            <lightbox album="" :src="item.ext.url" style="width:300px">
+              <img :style="{width:'100px',height:(item.ext.height/item.ext.width)*100 +'px'}" :src="item.attach">
+            </lightbox>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+  <meta itemprop="name" content="DK趋势"/>
+  <meta itemprop="image" content="./images/banner@2x.png" />
+  <meta name="description" itemprop="description" content="智能掘取好股 尊享机会仅此1次" />
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <title>DK趋势</title>
+  <script type="text/javascript">
+    // 腾讯统计
+    setTimeout(function() {
+      var _mtac = {};
+      (function() {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500596132");
+
+        var s = document.getElementsByTagName("script")[1];
+        s.parentNode.insertBefore(mta, s);
+      })();
+    }, 2000);
+  </script>
+  <script type="text/javascript" src="https://h5.niuguwang.com/cdn/js/flexble.js"></script>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <section class="container" @scroll="scrollView" ref="scrollView">
+      <div class="clienView" ref="clienView">
+        <div class="navImg"  ref="navView">
+          <img class="widImg" src="./images/banner@2x.png" alt="">
+        </div>
+
+        <div class="contentView" v-if="!read">
+          <div :class="isInput ? 'content' : 'content content-top'">
+            <div class="fromCont">
+              <template v-if="userType > 1">
+                <div class="tipsPane">
+                  <h6>{{showmessage}}</h6>
+                  <h4><b @click="telPhone(telNum)"> {{telNum}} </b></h4>
+                  <van-button type="danger" @click="toBuy">{{userType == 2 ? '立即续费' : '立即支付'}}</van-button>
+                  <p>我们承诺：绝不泄露您的信息</p>
+                </div>
+              </template>
+              <template v-else>
+                <template v-if="isInput">
+                  <van-cell-group class="input-pane border-ios phone-pane">
+                    <img class="icon icon-phone" src="./images/device-mobile@2x.png" alt="">
+                    <input type="tel" maxlength="11" v-model="phoneNum" placeholder="请输入手机号">
+                    <img class="iconTrue" v-if="phoneNum.length == 11" src="./images/true@2x.png" alt="">
+                  </van-cell-group>
+                  <van-cell-group class="input-pane border-ios code-pane">
+                    <img class="icon icon-yzm" src="./images/lock@2x.png" alt="">
+                    <input type="tel" maxlength="6" v-model="verifyCode" placeholder="请输入验证码">
+                    <img class="iconTrue" v-if="verifyCode.length == 4" src="./images/true@2x.png" alt="">
+                    <button class="codeBtn" @click="getVerifyCode" :disabled="timeNum != 60">{{timeNum == 60 ? '获取验证码' : timeNum + 's后重发'}}</button>
+                  </van-cell-group>
+                </template>
+                <p>注：如遇问题请拨打电话 <span class="phone-num" @click="telPhone(telNum)">{{telNum}}</span></p>
+                <div class="input-pane submit">
+                  <van-button type="primary" @click="submitFree">一键申领</van-button>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- 轮播图 -->
+      <div :class="buy ? 'swipePane swipePane-top' : 'swipePane'">
+        <van-swipe :show-indicators='false' :autoplay="2000">
+          <van-swipe-item v-for="(image, index) in images" :key="index">
+            <img v-lazy="image" />
+          </van-swipe-item>
+        </van-swipe>
+      </div>
+      
+      <div class="imgPane">
+        <lazy-component>
+          <img class="widImg" v-for="imgurl in imgList" v-lazy="imgurl" alt="">
+        </lazy-component>
+      </div>
+
+      <template v-if="buy">
+        <footer class="footer">
+          <div class="gobtn" @click="toBuy">立即支付</div>
+        </footer>
+      </template>
+
+      <template v-if="!read">
+        <footer class="footer" v-if="isGoBtn"> 
+          <div class="gobtn" @click="scrollTopView">{{userType > 1 ? (userType == 2 ? '立即续费' : '立即支付') : '免费试用'}}</div>
+        </footer>
+      </template>
+    </section>
+
+    <van-popup :close-on-click-overlay="false" v-model="popupShow">
+      <!-- app外  share 领取成功-->
+      <div class="popupBg" v-if="isShare" @click="toDownload">  
+        <img class="icon-close" src="./images/close-icon.png" alt="">
+      </div>
+      <!-- app内 已登录领取成功-->
+      <div class="popupBg" v-else @click="goQuantDK">
+        <img class="icon-close" src="./images/close-icon.png" alt="">
+        <!-- <div class="popupCont">
+          <p>{{alertMsg}}</p>
+          <h6><span>官方客服电话：</span><b @click="telPhone(telNum)">{{telNum}}</b></h6>
+        </div>
+        <div class="zdbtn">
+          <van-button type="danger" >知道了</van-button>
+        </div> -->
+      </div>
+    </van-popup>
+    
+    <login :login-show="loginShow"></login>
+  </div>
+</body>
+</html>

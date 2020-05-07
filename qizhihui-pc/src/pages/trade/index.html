@@ -1,0 +1,356 @@
+<div class="trade-center">
+  <!-- <top :check-tab="5" class="color-header"></top> -->
+  <!-- <div class="head-bg">
+
+  </div> -->
+  <div class="container">
+    <div class="trade-nav" :class="{'trade-nav2': $root.simulate}">
+      <div class="trade-title">交易中心</div>
+      <div class="trade-type-switch">
+        <div :class="{'actived': !$root.simulate}" class="type-item" @click="changeSimulateHandler(false)">实盘交易</div>
+        <div :class="{'actived': $root.simulate}" class="type-item" @click="changeSimulateHandler(true)">模拟交易</div>
+      </div>
+    </div>
+    <div class="trade-market">
+      <div class="market-list-wraper">
+        <el-table :data="marketList" style="width: 100%" height="600" class="market-list" :row-class-name="currentMarketStyle" @row-click="selectCurrentMarket">
+          <el-table-column label="交易品种" width="120">
+            <template slot-scope="scope">
+              <div class="market-name">
+                <span>{{ scope.row.symbolname }}</span>
+              </div>
+              <div :class="{'open': scope.row.openstatus === 1}" class="market-status">{{ scope.row.openstatustext }}</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="nowv" label="最新价" align="center">
+          </el-table-column>
+          <el-table-column prop="updownrate" label="涨跌幅" align="center" sortable :sort-method="marketListSort">
+          </el-table-column>
+        </el-table>
+      </div>
+      <div class="current-market">
+        <div class="market-info">
+          <div class="market-main">
+            <div class="main-left">
+              <div>
+                <div class="market-name">{{currentMarket.marketInfo.symbolname}}</div>
+                <div class="market-status">{{currentMarket.marketInfo.tradestatustext}}</div>
+              </div>
+              <div :class="getColor(currentMarket.marketInfo.updown)">
+                <div class="market-price">{{currentMarket.marketInfo.nowv}}</div>
+                <div class="market-updown">
+                  <span>{{currentMarket.marketInfo.updown}}</span>
+                  <span>{{currentMarket.marketInfo.updownrate}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="main-right">
+              <div class="buy-up" @click="showOrderPanel(1)">
+                <div class="title">买涨</div>
+                <div class="price">{{currentMarket.marketInfo.askp}}</div>
+              </div>
+              <div class="buy-down" @click="showOrderPanel(2)">
+                <div>买跌</div>
+                <div>{{currentMarket.marketInfo.bidp}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="market-detail">
+            <span>今开 {{currentMarket.marketInfo.openp}}</span>
+            <span>昨收 {{currentMarket.marketInfo.preclose}}</span>
+            <span>最高 {{currentMarket.marketInfo.highp}}</span>
+            <span>最低 {{currentMarket.marketInfo.lowp}}</span>
+            <span>波动 {{currentMarket.marketInfo.fluctuate}}</span>
+            <span>涨速 {{currentMarket.marketInfo.changespeed}}</span>
+          </div>
+        </div>
+        <div class="market-chart">
+          <div class="tabs">
+            <div class="tab-item" :class="{'selected': chartType === 0}" @click="chartType = 0">分时</div>
+            <div class="tab-item" :class="{'selected': chartType === 6}" @click="chartType = 6">日K</div>
+            <div class="tab-item" :class="{'selected': chartType === 1}" @click="chartType = 1">1分钟</div>
+            <div class="tab-item" :class="{'selected': chartType === 7}" @click="chartType = 7">3分钟</div>
+            <div class="tab-item" :class="{'selected': chartType === 2}" @click="chartType = 2">5分钟</div>
+            <div class="tab-item" :class="{'selected': chartType === 3}" @click="chartType = 3">15分钟</div>
+            <div class="tab-item" :class="{'selected': chartType === 4}" @click="chartType = 4">30分钟</div>
+            <div class="tab-item" :class="{'selected': chartType === 5}" @click="chartType = 5">60分钟</div>
+            <div class="tab-item" :class="{'selected': chartType === 8}" @click="chartType = 8">240分钟</div>
+          </div>
+          <div class="chart-wraper">
+            <div v-show="chartType === 0" class="chart sharechart"></div>
+            <div v-show="chartType !== 0" class="chart candlechart"></div>
+            <div v-show="chartType !== 0" class="indicator-tabs">
+              <div class="tab-item" :class="{'selected': indicatorType === 'VOL'}" @click="changeIndicatorType('VOL')">VOL</div>
+              <div class="tab-item" :class="{'selected': indicatorType === 'MACD'}" @click="changeIndicatorType('MACD')">MACD</div>
+              <div class="tab-item" :class="{'selected': indicatorType === 'KDJ'}" @click="changeIndicatorType('KDJ')">KDJ</div>
+              <div class="tab-item" :class="{'selected': indicatorType === 'RSI'}" @click="changeIndicatorType('RSI')">RSI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="account-info">
+      <div class="account-item">
+        浮动盈亏 {{account.totalprofit}}
+      </div>
+      <div class="account-item">
+        冻结保证金 {{account.frozenamout}}
+      </div>
+      <div class="account-item">
+        可用金额 {{account.canusedamount}}
+      </div>
+      <div class="account-item no-border">
+        持仓 {{account.posnum}}
+      </div>
+      <div v-show="!$root.simulate" class="charge-item">
+        <el-button class="charge-btn" type="text" @click="chargeHandler">立即充值</el-button>
+      </div>
+    </div>
+    <div class="trade-info">
+      <el-tabs v-model="tradeListType">
+        <el-tab-pane label="持仓" name="position" class="trade-list-pane">
+          <el-table :data="positionList">
+            <el-table-column prop="showno" label="单号" align="center" width="90">
+            </el-table-column>
+            <el-table-column prop="direction" label="方向" align="center" width="48">
+              <template slot-scope="scope">
+                <span :class="{'red': scope.row.direction === '1', 'green': scope.row.direction !== '1'}">{{scope.row.direction === '1' ? '买涨' : '买跌'}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="contractname" label="交易品种" align="center" width="78">
+            </el-table-column>
+            <el-table-column prop="quantity" label="手数" align="center" width="48">
+            </el-table-column>
+            <el-table-column prop="postime" label="开仓时间" align="center" width="138">
+            </el-table-column>
+            <el-table-column prop="buyprice" label="开仓" align="center" width="80">
+            </el-table-column>
+            <el-table-column prop="nowprice" label="最新平仓" align="center" width="80">
+            </el-table-column>
+            <el-table-column prop="stopprofit" label="止盈" align="center" width="70">
+            </el-table-column>
+            <el-table-column prop="stoploss" label="止损" align="center" width="70">
+            </el-table-column>
+            <el-table-column prop="tradefee" label="交易费用" align="center" width="80">
+            </el-table-column>
+            <el-table-column prop="margin" label="占用保证金" align="center" width="90">
+            </el-table-column>
+            <el-table-column prop="profit" label="浮动盈亏" align="center">
+            </el-table-column>
+            <el-table-column prop="closetime" label="自动平仓时间" align="center" width="115">
+            </el-table-column>
+            <el-table-column label="操作" align="center" width="100">
+              <template slot-scope="scope">
+                <div>
+                  <el-button @click="setLossProfit(scope.row)" style="width: 80px" size="mini" class="set-btn">止盈止损</el-button>
+                </div>
+                <div class="mt-10">
+                  <el-button @click="closePositionHandler(scope.row)" style="width: 80px" size="mini" class="close-btn">平仓</el-button>
+                </div>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-tab-pane>
+        <el-tab-pane label="结算" name="settlement">
+          <el-table :data="settlementList">
+            <el-table-column prop="transid" label="单号" align="center">
+            </el-table-column>
+            <el-table-column prop="direction" label="方向" align="center">
+              <template slot-scope="scope">
+                <span>{{scope.row.direction === '1' ? '买涨' : '买跌'}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="contractname" label="交易品种" align="center">
+            </el-table-column>
+            <el-table-column prop="quantity" label="手数" align="center">
+            </el-table-column>
+            <el-table-column prop="opentime" label="开平时间" align="center" width="130">
+              <template slot-scope="scope">
+                <div style="line-height: 1;">{{scope.row.opentime}}</div>
+                <div style="font-size: 12px;">|</div>
+                <div style="line-height: 1;">{{scope.row.closetime}}</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="buyprice" label="开仓" align="center">
+            </el-table-column>
+            <el-table-column prop="sellprice" label="平仓" align="center">
+            </el-table-column>
+            <el-table-column prop="stopprofit" label="止盈" align="center">
+            </el-table-column>
+            <el-table-column prop="stoploss" label="止损" align="center">
+            </el-table-column>
+            <el-table-column prop="tradefee" label="交易费用" align="center">
+            </el-table-column>
+            <el-table-column prop="profitnum" label="盈亏点数" align="center">
+            </el-table-column>
+            <el-table-column prop="profit" label="盈亏" align="center">
+            </el-table-column>
+            <el-table-column prop="closetype" label="平仓类型" align="center" width="110">
+            </el-table-column>
+          </el-table>
+          <!-- <el-pagination :page-size="pageSize" :current-page.sync="settlementListPage" layout="prev, pager, next" :total="settlementListTotal"
+            @current-change="loadSettlementList">
+          </el-pagination> -->
+          <div v-show="settlementList.length > 0" class="list-footer">
+            <el-button v-show="!settlementListTotal" type="text" plain class="load-more" @click="loadSettlementList" :loading="settlementListLoading">加载更多</el-button>
+            <span class="gray" v-show="settlementListTotal">没有更多数据啦~</span>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="流单" name="unfinished">
+          <el-table :data="unfinishedList">
+            <!-- <el-table-column prop="showno" label="单号" align="center"></el-table-column> -->
+            <el-table-column prop="direction" label="方向" align="center">
+              <template slot-scope="scope">
+                <span>{{scope.row.direction === '1' ? '买涨' : '买跌'}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="contractname" label="交易品种" align="center"></el-table-column>
+            <el-table-column prop="quantity" label="手数" align="center"></el-table-column>
+            <el-table-column prop="ordertime" label="委托时间" align="center"></el-table-column>
+            <el-table-column prop="buyprice" label="开仓" align="center"></el-table-column>
+            <el-table-column prop="stopprofit" label="止盈" align="center"></el-table-column>
+            <el-table-column prop="stoploss" label="止损" align="center"></el-table-column>
+            <!-- <el-table-column prop="status" label="流单原因" align="center"></el-table-column> -->
+          </el-table>
+          <!-- <el-pagination :page-size="pageSize" :current-page.sync="unfinishedListPage" layout="prev, pager, next" :total="unfinishedListTotal"
+            @current-change="loadUnfinishedList">
+          </el-pagination> -->
+          <div v-show="unfinishedList.length > 0" class="list-footer">
+            <el-button v-show="unfinishedListTotal" type="text" plain class="load-more" @click="loadUnfinishedList"  :loading="unfinishedListLoading">加载更多</el-button>
+            <span class="gray" v-show="settlementListTotal">没有更多数据啦~</span>
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+  </div>
+  <!-- <bottom></bottom> -->
+  <el-dialog class="order-panel" :title="$root.simulate ? currentMarket.marketInfo.symbolname + '（模拟）'  : currentMarket.marketInfo.symbolname" :visible.sync="orderPanelVisible" center width="500px">
+    <div class="order-main" v-loading="orderPanelLoading">
+      <div class="order-direction">
+        <div class="direction-item direction-up" :class="{'selected': order.direction === 1}" @click="changeOrderDirection(1)">买涨</div>
+        <div class="direction-item direction-down" :class="{'selected': order.direction === 2}" @click="changeOrderDirection(2)">买跌</div>
+      </div>
+      <div class="order-item">
+        <div class="f-left">市价</div>
+        <div class="f-right">
+          {{marketPrice}}
+        </div>
+      </div>
+      <div class="order-item">
+        <div class="f-left">交易数量</div>
+        <div class="f-right">
+          <el-radio-group v-model="order.quantity" size="mini">
+            <el-radio-button label="1">1手</el-radio-button>
+            <el-radio-button label="2">2手</el-radio-button>
+            <el-radio-button label="3">3手</el-radio-button>
+            <el-radio-button label="5">5手</el-radio-button>
+            <el-radio-button label="10">10手</el-radio-button>
+          </el-radio-group>
+        </div>
+      </div>
+      <div class="order-item">
+        <div class="f-left">触发止盈</div>
+        <div class="f-right">{{order.stopprofit}}</div>
+      </div>
+      <div class="order-item">
+        <div class="f-left">触发止损</div>
+        <div class="f-right">
+          <el-select v-model="stopLev" placeholder="请选择">
+            <el-option v-for="item in stopList" :key="item" :label="+orderInfo.perstoploss * item * order.quantity" :value="item">
+            </el-option>
+          </el-select>
+        </div>
+      </div>
+      <div class="order-item">
+        <div class="f-left">
+          <span>可用余额</span>
+          <span>{{orderInfo.balance}}元</span>
+        </div>
+        <div v-show="!$root.simulate" class="f-right">
+          <router-link class="charge-link" to="/personalcenter/2">充值</router-link>
+        </div>
+      </div>
+      <div class="order-tips">
+        <p>合计支付
+          <span>{{order.tradefee + order.margin}}</span>元
+          <span>(交易费用{{order.tradefee}}+保证金{{order.margin}})</span>
+        </p>
+        <p>
+          <span>止盈线{{order.stopprofit}}</span>
+          <span>止损线{{order.stoploss}}</span>
+        </p>
+      </div>
+      <div class="panel-footer">
+        <el-button v-show="order.direction === 1" class="order-btn up" @click="orderHandler">确定买涨</el-button>
+        <el-button v-show="order.direction === 2" class="order-btn down" @click="orderHandler">确定买跌</el-button>
+      </div>
+    </div>
+  </el-dialog>
+  <el-dialog class="loss-profit-panel" :visible.sync="lossProfitOrderPanel" width="500px">
+    <div v-loading="lossProfitLoading">
+      <div class="loss-profit-no">
+        单号：{{lossProfitOrder.showno}}
+      </div>
+      <div class="loss-profit-market">
+        <span>{{lossProfitOrder.contractname}}</span>
+        <span>{{lossProfitOrder.quantity}}手</span>
+        <span>{{lossProfitOrder.direction === '1' ? '买涨' : '买跌'}}</span>
+        <span>盈亏{{lossProfitOrder.profitpoints}}点</span>
+        <span>开仓价 {{lossProfitOrder.buyprice}}</span>
+      </div>
+      <div class="loss-profit-item">
+        <div class="f-left">
+          <el-input v-model="lossProfit.stopprofit" style="width:50px"></el-input>
+          <span class="ml-10">点</span>
+          <span>({{profitPrice.toFixed(fixedVal) || 0}})</span>
+          <span>止盈
+            <span class="red">{{profitAmount.toFixed(fixedVal)}}</span>
+          </span>
+        </div>
+        <div class="f-right">
+          <el-button class="icon" @click="lossProfit.stopprofit = +lossProfit.stopprofit - 1">
+            <i class="el-icon-minus"></i>
+          </el-button>
+          <el-button class="icon ml-10" @click="lossProfit.stopprofit = +lossProfit.stopprofit + 1">
+            <i class="el-icon-plus"></i>
+          </el-button>
+        </div>
+      </div>
+      <div class="loss-profit-item b-bottom">
+        <div class="f-left">
+          <el-input v-model="lossProfit.stoploss" style="width:50px"></el-input>
+          <span class="ml-10">点</span>
+          <span>({{lossPrice.toFixed(fixedVal) || 0}})</span>
+          <span>止损
+            <span class="green">{{lossAmount.toFixed(fixedVal)}}</span>
+          </span>
+        </div>
+        <div class="f-right">
+          <el-button class="icon" @click="lossProfit.stoploss = +lossProfit.stoploss - 1">
+            <i class="el-icon-minus"></i>
+          </el-button>
+          <el-button class="icon ml-10" @click="lossProfit.stoploss = +lossProfit.stoploss + 1">
+            <i class="el-icon-plus"></i>
+          </el-button>
+        </div>
+      </div>
+      <div class="loss-profit-tips">
+        <span>{{lossProfitOrder.setprofittxt}}</span>
+        <span>{{lossProfitOrder.setlosstxt}}</span>
+      </div>
+      <div class="loss-profit-footer">
+        <el-button class="confirm-btn" type="primary" @click="lossProfitHandler">确定</el-button>
+      </div>
+    </div>
+  </el-dialog>
+  <el-dialog class="charge-panel" :visible.sync="chargePanel">
+    <div>
+      <div class="charge-msg">{{chargeMessage}}</div>
+      <div class="charge-footer">
+        <el-button @click="chargePanel = false">取 消</el-button>
+        <el-button v-if="$root.simulate" type="primary" @click="chargePanel = false">确定</el-button>
+        <el-button v-else type="primary" @click="toCharge">立即充值</el-button>
+      </div>
+    </div>
+  </el-dialog>
+</div>

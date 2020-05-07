@@ -1,0 +1,40 @@
+<div id="app">
+  <div class="wrapper" :style="{height: totalHeight}">
+      
+    <div class="top-video-wrap">
+        <video-player :vedioInfo="videoObj" :currentVideo="currentGoodVideo"></video-player>
+    </div>
+    <div class="menu-wrap">
+      <mt-navbar v-model="currentTab">
+        <mt-tab-item v-for="(item, index) in tabList" :key="index" :id="index">
+          {{item}}
+        </mt-tab-item>
+      </mt-navbar>
+    </div>
+    <div class="content-wrap">
+      <mt-tab-container v-model="currentTab">
+        <mt-tab-container-item :id="0" :style="{height: contentHeight}">
+            <div class="online">在线人数: {{ numOnline }}人</div>
+          <chat class="chat-live" @getList="getMessageList"  :message-list="messageList" @sendMessage="sendMessage" @clearMsgList="clearMsgList"></chat>
+        </mt-tab-container-item>
+        <mt-tab-container-item :id="1">
+          <notice :noticeImg="noticeImg"></notice>
+        </mt-tab-container-item>
+        <mt-tab-container-item :id="2" class="auto-scroll-y">
+          <live-info :title="$root.liveInfo.title" :content="$root.liveInfo.description"></live-info>
+          <teacher-info :teacher-list="teacherList"></teacher-info>
+        </mt-tab-container-item>
+        <mt-tab-container-item :id="3">
+          <video-list
+          :videoList="goodVideoList"
+          :currentVideo="currentGoodVideo"
+          @changeVideo="changeVideo"
+          ></video-list>
+        </mt-tab-container-item>
+        <!-- <mt-tab-container-item :id="4">
+          <team :slogan="team.slogan" :qrcode="team.qrcode"></team>
+        </mt-tab-container-item> -->
+      </mt-tab-container>
+    </div>
+  </div>
+</div>

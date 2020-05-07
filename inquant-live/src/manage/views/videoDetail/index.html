@@ -1,0 +1,48 @@
+<div class="video-detail">
+  <Card dis-hover>
+    <p slot="title">
+      {{title}}
+    </p>
+    <Form ref="video" :model="video" :rules="videoValidate" :label-width="120">
+      <FormItem label="视频标题" prop="liveTitle">
+        <Input v-model="video.liveTitle" placeholder="请输入视频标题" style="width: 200px"></Input>
+      </FormItem>
+      <FormItem label="视频描述" prop="description">
+        <Input v-model="video.description" type="textarea" placeholder="请输入视频描述" style="width: 400px"></Input>
+      </FormItem>
+      <FormItem label="视频配图">
+        <div v-show="video.cover && video.cover.length > 0" class="img-wrapper">
+          <img :src="video.cover" class="cover-img">
+          <div class="video-cover">
+            <Icon type="compose" @click.native="changeCover" size="60"></Icon>
+            <Icon type="ios-trash-outline" @click.native="removeCover" size="60"></Icon>
+          </div>
+        </div>
+        <div v-show="!video.cover" class="no-img-wrapper">
+          <input type="file" name="cover" ref="cover" id="cover" class="inputfile" @change="uploadImg" />
+          <label for="cover">
+            <Icon type="camera" size="60"></Icon>
+          </label>
+        </div>
+      </FormItem>
+      <FormItem label="视频地址" prop="videoUrl">
+        <span v-if="$route.name !== 'newVideo'">{{video.videoUrl}}</span>
+        <Select v-if="$route.name === 'newVideo'" v-model="video.videoUrl" style="width:400px">
+          <Option v-for="(source, index) in sourceList" :value="source" :key="index">{{ source }}</Option>
+        </Select>
+      </FormItem>
+      <FormItem label="直播室">
+        <Select :disabled="$route.name === 'editVideo'" v-model="video.roomid" style="width:200px">
+          <Option v-for="live in liveList" :value="live.roomId" :key="live.roomId">{{ live.Title }}</Option>
+        </Select>
+      </FormItem>
+      <FormItem>
+        <Checkbox v-model="video.bright">是否精彩视频</Checkbox>
+      </FormItem>
+      <FormItem>
+        <Button @click="$router.push('/video')">返回</Button>
+        <Button type="primary" class="ml-20" @click="saveVideoHandler">保存</Button>
+      </FormItem>
+    </Form>
+  </Card>
+</div>
