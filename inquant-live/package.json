@@ -75,7 +75,7 @@
     "mint-ui": "^2.2.9",
     "moment": "^2.18.1",
     "qs": "^6.5.1",
-    "swiper": "3.4.2",
+    "swiper": "6.5.1",
     "vue": "^2.4.4",
     "vue-json-excel": "^0.2.98",
     "vue-lightbox": "^1.1.6",
