@@ -30,7 +30,7 @@
     "js-cookie": "^2.1.4",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
-    "qs": "^6.5.1",
+    "qs": "^6.5.3",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
     "sweet-modal-vue": "^1.2.0",
